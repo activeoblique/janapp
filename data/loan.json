@@ -1,0 +1,108 @@
+{
+    "name": "loan",
+    "primaryKey": "loan_id",
+    "attributes": [
+        {
+            "constraints": [],
+            "name": "loan_id",
+            "privacyLevel": {
+                "type": "private",
+                "operations": []
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [],
+            "name": "account_id",
+            "privacyLevel": {
+                "type": "public",
+                "index": false
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [],
+            "name": "date",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLDate"
+        },
+        {
+            "constraints": [],
+            "name": "amount",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [],
+            "name": "duration",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [],
+            "name": "payments",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [],
+            "name": "status",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLString"
+        },
+        {
+            "constraints": [],
+            "name": "bank_id",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
+        }
+    ]
+}

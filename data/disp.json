@@ -1,0 +1,66 @@
+{
+    "name": "disp",
+    "primaryKey": "disp_id",
+    "attributes": [
+        {
+            "constraints": [],
+            "name": "disp_id",
+            "privacyLevel": {
+                "type": "private",
+                "operations": []
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [],
+            "name": "client_id",
+            "privacyLevel": {
+                "type": "public",
+                "index": false
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [],
+            "name": "account_id",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [],
+            "name": "type",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLString"
+        },
+        {
+            "constraints": [],
+            "name": "bank_id",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
+        }
+    ]
+}

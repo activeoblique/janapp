@@ -1,0 +1,66 @@
+{
+    "name": "accounts",
+    "primaryKey": "account_id",
+    "attributes": [
+        {
+            "constraints": [],
+            "name": "account_id",
+            "privacyLevel": {
+                "type": "private",
+                "operations": []
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [],
+            "name": "district_id",
+            "privacyLevel": {
+                "type": "public",
+                "index": false
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [],
+            "name": "frequency",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLString"
+        },
+        {
+            "constraints": [],
+            "name": "date",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLDate"
+        },
+        {
+            "constraints": [],
+            "name": "bank_id",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
+        }
+    ]
+}
