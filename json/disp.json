@@ -1,13 +1,18 @@
 {
     "name": "disp",
-    "primaryKey": "disp_id",
+    "primaryKey": ["disp_id"],
     "attributes": [
         {
             "constraints": [],
             "name": "disp_id",
             "privacyLevel": {
                 "type": "private",
-                "operations": []
+                "operations": [
+		  {
+		    "type": "EqualityComparison",
+		    "index": false
+		  }
+		]
             },
             "type": "SQLUnsignedInt32"
         },
@@ -15,8 +20,13 @@
             "constraints": [],
             "name": "client_id",
             "privacyLevel": {
-                "type": "public",
-                "index": false
+                "type": "private",
+                "operations": [
+		  {
+		    "type": "EqualityComparison",
+		    "index": false
+		  }
+		]
             },
             "type": "SQLUnsignedInt32"
         },
@@ -35,7 +45,12 @@
             "type": "SQLUnsignedInt32"
         },
         {
-            "constraints": [],
+            "constraints": [
+	      {
+	        "value": 15,
+	        "type": "padTo"
+    	      }
+	    ],
             "name": "type",
             "privacyLevel": {
                 "type": "private",
@@ -56,7 +71,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
