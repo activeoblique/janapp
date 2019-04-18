@@ -7,7 +7,12 @@
             "name": "card_id",
             "privacyLevel": {
                 "type": "private",
-                "operations": []
+                "operations": [
+		  {
+		    "type": "EqualityComparison",
+		    "index": false
+		  }
+		]
             },
             "type": "SQLUnsignedInt32"
         },
@@ -16,12 +21,22 @@
             "name": "disp_id",
             "privacyLevel": {
                 "type": "private",
-                "index": false
+		"operations": [
+		  {
+		    "type": "EqualityComparison",
+		    "index": false
+		  }
+		]
             },
             "type": "SQLUnsignedInt32"
         },
         {
-            "constraints": [],
+            "constraints": [
+		{
+		  "value": 20,
+		  "type": "padTo"
+		}
+	    ],
             "name": "type",
             "privacyLevel": {
                 "type": "private",
@@ -56,7 +71,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
