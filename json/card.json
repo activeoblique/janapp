@@ -1,6 +1,6 @@
 {
     "name": "card",
-    "primaryKey": "card_id",
+    "primaryKey": ["card_id"],
     "attributes": [
         {
             "constraints": [],
@@ -15,7 +15,7 @@
             "constraints": [],
             "name": "disp_id",
             "privacyLevel": {
-                "type": "public",
+                "type": "private",
                 "index": false
             },
             "type": "SQLUnsignedInt32"
@@ -46,7 +46,7 @@
                     }
                 ]
             },
-            "type": "SQLDate"
+            "type": "SQLUnsignedInt32"
         },
         {
             "constraints": [],
