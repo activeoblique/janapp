@@ -1,0 +1,114 @@
+{
+    "name": "orders",
+    "primaryKey": ["order_id"],
+    "attributes": [
+        {
+            "constraints": [],
+            "name": "order_id",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+		  {
+		    "type": "EqualityComparison",
+		    "index": false
+		  }
+		]
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [],
+            "name": "account_id",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+		  {
+		    "type": "EqualityComparison",
+		    "index": false
+		  }
+		]
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [
+		{
+		  "value": 20,
+		  "type": "padTo"
+		}
+	    ],
+            "name": "bank_to",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLString"
+        },
+        {
+            "constraints": [],
+            "name": "account_to",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [],
+            "name": "amount",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [
+		{
+		  "value": 20,
+		  "type": "padTo"
+		}
+	    ],
+            "name": "k_symbol",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": false
+                    }
+                ]
+            },
+            "type": "SQLString"
+        },
+        {
+            "constraints": [],
+            "name": "bank_id",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
+        }
+    ]
+}
