@@ -1,27 +1,42 @@
 {
     "name": "order",
-    "primaryKey": "order_id",
+    "primaryKey": ["order_id"],
     "attributes": [
         {
             "constraints": [],
             "name": "order_id",
             "privacyLevel": {
                 "type": "private",
-                "operations": []
+                "operations": [
+		  {
+		    "type": "EqualityComparison",
+		    "index": false
+		  }
+		]
             },
             "type": "SQLUnsignedInt32"
         },
         {
             "constraints": [],
-            "name": "account_idr",
+            "name": "account_id",
             "privacyLevel": {
-                "type": "public",
-                "index": false
+                "type": "private",
+                "operations": [
+		  {
+		    "type": "EqualityComparison",
+		    "index": false
+    		  }
+		]
             },
             "type": "SQLUnsignedInt32"
         },
         {
-            "constraints": [],
+            "constraints": [
+		{
+		  "value": 20,
+		  "type": "padTo"
+		}
+	    ],
             "name": "bank_to",
             "privacyLevel": {
                 "type": "private",
@@ -63,7 +78,12 @@
             "type": "SQLUnsignedInt32"
         },
         {
-            "constraints": [],
+            "constraints": [
+		{
+		  "value": 20,
+		  "type": "padTo"
+		}
+	    ],
             "name": "k_symbol",
             "privacyLevel": {
                 "type": "private",
@@ -84,7 +104,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
