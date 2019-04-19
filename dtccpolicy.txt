@@ -1,0 +1,80 @@
+DEFAULT DENY FOR DATA;
+DEFAULT DENY FOR POLICY;
+
+USER WITH username = 'einned' IS SUPERUSER;
+
+USER WITH username = 'yh'
+  MAY READ AGGREGATES OF accounts.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'yh'
+  MAY READ AGGREGATES OF card.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'yh'
+  MAY READ AGGREGATES OF client.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'yh'
+  MAY READ AGGREGATES OF disp.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'yh'
+  MAY READ AGGREGATES OF loan.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'yh'
+  MAY READ AGGREGATES OF orders.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'yh'
+  MAY READ AGGREGATES OF trans.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+
+USER WITH username = 'jh'
+  MAY READ AGGREGATES OF accounts.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'jh'
+  MAY READ AGGREGATES OF card.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'jh'
+  MAY READ AGGREGATES OF client.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'jh'
+  MAY READ AGGREGATES OF disp.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'jh'
+  MAY READ AGGREGATES OF loan.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'jh'
+  MAY READ AGGREGATES OF orders.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'jh'
+  MAY READ AGGREGATES OF trans.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+
+
+USER WITH username = 'yh'
+  MAY READ DETAILS OF accounts.*
+  WHERE bank_id = 1;
+USER WITH username = 'yh'
+  MAY READ DETAILS OF card.*
+  WHERE bank_id = 1;
+USER WITH username = 'yh'
+  MAY READ DETAILS OF client.*
+  WHERE bank_id = 1;
+USER WITH username = 'yh'
+  MAY READ DETAILS OF disp.*
+  WHERE bank_id = 1;
+USER WITH username = 'yh'
+  MAY READ DETAILS OF loan.*
+  WHERE bank_id = 1;
+USER WITH username = 'yh'
+  MAY READ DETAILS OF orders.*
+  WHERE bank_id = 1;
+USER WITH username = 'yh'
+  MAY READ DETAILS OF trans.*
+  WHERE bank_id = 1;
+
+
+USER WITH username = 'jh'
+  MAY READ DETAILS OF accounts.*
+  WHERE bank_id = 1;
+USER WITH username = 'jh'
+  MAY READ DETAILS OF card.*
+  WHERE bank_id = 1;
+USER WITH username = 'jh'
+  MAY READ DETAILS OF client.*
+  WHERE bank_id = 1;
+USER WITH username = 'jh'
+  MAY READ DETAILS OF disp.*
+  WHERE bank_id = 1;
+USER WITH username = 'jh'
+  MAY READ DETAILS OF loan.*
+  WHERE bank_id = 1;
+USER WITH username = 'jh'
+  MAY READ DETAILS OF orders.*
+  WHERE bank_id = 1;
+USER WITH username = 'jh'
+  MAY READ DETAILS OF trans.*
+  WHERE bank_id = 1;
