@@ -81,7 +81,7 @@
                     }
                 ]
             },
-            "type": "SQLUnsignedInt32"
+            "type": "SQLFixed 20"
         },
         {
             "constraints": [
