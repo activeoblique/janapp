@@ -100,7 +100,7 @@
                     }
                 ]
             },
-            "type": "SQLUnsignedInt32"
+            "type": "SQLFixed 20"
         },
         {
             "constraints": [],
@@ -114,7 +114,7 @@
                     }
                 ]
             },
-            "type": "SQLUnsignedInt32"
+            "type": "SQLFixed 20"
         },
         {
             "constraints": [
@@ -155,7 +155,12 @@
             "type": "SQLString"
         },
         {
-            "constraints": [],
+            "constraints": [
+	        {
+		    "value":20,
+		    "type": "padTo"
+		}
+	    ],
             "name": "account",
             "privacyLevel": {
                 "type": "private",
@@ -166,7 +171,7 @@
                     }
                 ]
             },
-            "type": "SQLUnsignedInt32"
+            "type": "SQLString"
         },
         {
             "constraints": [],
