@@ -1,6 +1,8 @@
 {
+    "primaryKey": [
+        "loan_id"
+    ],
     "name": "loan",
-    "primaryKey": ["loan_id"],
     "attributes": [
         {
             "constraints": [],
@@ -8,11 +10,11 @@
             "privacyLevel": {
                 "type": "private",
                 "operations": [
-		  {
-		    "type": "EqualityComparison",
-		    "index": false
-		  }
-		]
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
             },
             "type": "SQLUnsignedInt32"
         },
@@ -22,11 +24,15 @@
             "privacyLevel": {
                 "type": "private",
                 "operations": [
-		  {
-		    "type": "EqualityComparison",
-		    "index": false
-		  }
-		]
+                    {
+                        "type": "EqualityComparison",
+                        "index": true,
+                        "foreignKey": {
+                            "attribute": "account_id",
+                            "relation": "accounts"
+                        }
+                    }
+                ]
             },
             "type": "SQLUnsignedInt32"
         },
@@ -38,7 +44,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -52,7 +58,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -66,7 +72,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -80,7 +86,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -88,18 +94,18 @@
         },
         {
             "constraints": [
-	      {
-		"value": 20,
-		"type": "padTo"
-	      }
-	    ],
+                {
+                    "value": 20,
+                    "type": "padTo"
+                }
+            ],
             "name": "status",
             "privacyLevel": {
                 "type": "private",
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },

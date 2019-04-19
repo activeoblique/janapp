@@ -1,78 +1,83 @@
 {
+    "primaryKey": [
+        "account_id"
+    ],
     "name": "accounts",
-    "primaryKey": ["account_id"],
     "attributes": [
         {
+            "constraints": [],
             "name": "account_id",
             "privacyLevel": {
                 "type": "private",
-		"operations": [
-		  {
-		    "type": "EqualityComparison",
-		    "index": false
-		  }
-		]
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
             },
             "type": "SQLUnsignedInt32"
         },
         {
+            "constraints": [],
             "name": "district_id",
             "privacyLevel": {
                 "type": "private",
-		"operations": [
-		  {
-		    "type": "EqualityComparison",
-		    "index": false
-		  }
-		]
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
             },
             "type": "SQLUnsignedInt32"
         },
         {
             "constraints": [
-		{
-		    "value":15,
-		    "type": "padTo"
-		}
-	    ],
-	    "name": "frequency",
+                {
+                    "value": 15,
+                    "type": "padTo"
+                }
+            ],
+            "name": "frequency",
             "privacyLevel": {
                 "type": "private",
-		"operations": [
-		  {
-		    "type": "EqualityComparison",
-		    "index": false
-		  }
-		]
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
             },
             "type": "SQLString"
         },
-	{
-	    "name": "date",
-	    "privacyLevel": {
-		"type": "private",
-		"operations": [
-		  {
-		    "type": "EqualityComparison",
-		    "index": false
-		  }
-		]
-	    },
-	    "type": "SQLUnsignedInt32"
-	},
-	{
-	    "name": "bank_id",
-	    "privacyLevel": {
-		"type": "private",
-		"operations": [
-		  {
-		    "type": "EqualityComparison",
-		    "index": true
-		  }
-		]
-	    },
-	    "type": "SQLUnsignedInt32"
-	}
-
+        {
+            "constraints": [],
+            "name": "date",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [],
+            "name": "bank_id",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
+        }
     ]
 }
