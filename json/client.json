@@ -1,6 +1,8 @@
 {
+    "primaryKey": [
+        "client_id"
+    ],
     "name": "client",
-    "primaryKey": ["client_id"],
     "attributes": [
         {
             "constraints": [],
@@ -8,11 +10,11 @@
             "privacyLevel": {
                 "type": "private",
                 "operations": [
-		  {
-		    "type":"EqualityComparison",
-		    "index":false
-		  }
-		]
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
             },
             "type": "SQLUnsignedInt32"
         },
@@ -22,11 +24,11 @@
             "privacyLevel": {
                 "type": "private",
                 "operations": [
-		  {
-		    "type":"EqualityComparison",
-		    "index": false
-		  }
-		]
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
             },
             "type": "SQLUnsignedInt32"
         },
@@ -38,7 +40,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },

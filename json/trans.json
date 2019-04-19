@@ -1,6 +1,8 @@
 {
+    "primaryKey": [
+        "trans_id"
+    ],
     "name": "trans",
-    "primaryKey": ["trans_id"],
     "attributes": [
         {
             "constraints": [],
@@ -8,11 +10,11 @@
             "privacyLevel": {
                 "type": "private",
                 "operations": [
-		  {
-		    "type": "EqualityComparison",
-		    "index": false
-		  }
-		]
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
             },
             "type": "SQLUnsignedInt32"
         },
@@ -22,11 +24,15 @@
             "privacyLevel": {
                 "type": "private",
                 "operations": [
-		  {
-		    "type": "EqualityComparison",
-		    "index": false
-		  }
-		]
+                    {
+                        "type": "EqualityComparison",
+                        "index": true,
+                        "foreignKey": {
+                            "attribute": "account_id",
+                            "relation": "accounts"
+                        }
+                    }
+                ]
             },
             "type": "SQLUnsignedInt32"
         },
@@ -38,7 +44,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -46,18 +52,18 @@
         },
         {
             "constraints": [
-		{
-		  "value": 20,
-		  "type": "padTo"
-		}
-	    ],
+                {
+                    "value": 20,
+                    "type": "padTo"
+                }
+            ],
             "name": "type",
             "privacyLevel": {
                 "type": "private",
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -65,18 +71,18 @@
         },
         {
             "constraints": [
-		{
-		  "value": 20,
-		  "type": "padTo"
-		}
-	    ],
+                {
+                    "value": 20,
+                    "type": "padTo"
+                }
+            ],
             "name": "operation",
             "privacyLevel": {
                 "type": "private",
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -90,7 +96,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -104,7 +110,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -112,18 +118,18 @@
         },
         {
             "constraints": [
-		{
-		  "value": 20,
-		  "type": "padTo"
-		}
-	    ],
+                {
+                    "value": 20,
+                    "type": "padTo"
+                }
+            ],
             "name": "k_symbol",
             "privacyLevel": {
                 "type": "private",
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -131,18 +137,18 @@
         },
         {
             "constraints": [
-		{
-		  "value": 20,
-		  "type": "padTo"
-		}
-	    ],
+                {
+                    "value": 20,
+                    "type": "padTo"
+                }
+            ],
             "name": "bank",
             "privacyLevel": {
                 "type": "private",
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -156,7 +162,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },

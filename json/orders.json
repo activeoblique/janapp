@@ -1,6 +1,8 @@
 {
+    "primaryKey": [
+        "order_id"
+    ],
     "name": "orders",
-    "primaryKey": ["order_id"],
     "attributes": [
         {
             "constraints": [],
@@ -8,11 +10,11 @@
             "privacyLevel": {
                 "type": "private",
                 "operations": [
-		  {
-		    "type": "EqualityComparison",
-		    "index": false
-		  }
-		]
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
             },
             "type": "SQLUnsignedInt32"
         },
@@ -22,28 +24,32 @@
             "privacyLevel": {
                 "type": "private",
                 "operations": [
-		  {
-		    "type": "EqualityComparison",
-		    "index": false
-		  }
-		]
+                    {
+                        "type": "EqualityComparison",
+                        "index": true,
+                        "foreignKey": {
+                            "attribute": "account_id",
+                            "relation": "accounts"
+                        }
+                    }
+                ]
             },
             "type": "SQLUnsignedInt32"
         },
         {
             "constraints": [
-		{
-		  "value": 20,
-		  "type": "padTo"
-		}
-	    ],
+                {
+                    "value": 20,
+                    "type": "padTo"
+                }
+            ],
             "name": "bank_to",
             "privacyLevel": {
                 "type": "private",
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -57,7 +63,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -71,7 +77,7 @@
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
@@ -79,18 +85,18 @@
         },
         {
             "constraints": [
-		{
-		  "value": 20,
-		  "type": "padTo"
-		}
-	    ],
+                {
+                    "value": 20,
+                    "type": "padTo"
+                }
+            ],
             "name": "k_symbol",
             "privacyLevel": {
                 "type": "private",
                 "operations": [
                     {
                         "type": "EqualityComparison",
-                        "index": false
+                        "index": true
                     }
                 ]
             },
