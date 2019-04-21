@@ -9,13 +9,10 @@
 </head>
 <body>
 <div id="home">
-    <form id="login" action="/login" class="current1" method="post">
+    <form id="login" action="/index" class="current1" method="post">
         <h3>Bank Login</h3>
-        {% if err %}
-        <p style="color:red">{{ err }}</p>
-        {% endif %}
-        <label>Username<input type="text" name="username" style="width:215px;" /><span>no username</span></label>
-        <label>Password<input type="password" name="password" style="width:215px;"/><span>no password</span></label>
+        <label>Username<input type="text" name="userName" style="width:215px;" /><span>no username</span></label>
+        <label>Password<input type="password" name="pass" style="width:215px;"/><span>no password</span></label>
         <button type="submit" >Login</button>
     </form>
     <h1 style="color: #EBEBEB; text-align: center;"> Welcome to Bank Database System! </h1>

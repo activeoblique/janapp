@@ -3,11 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Bank Database</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
-<body>
-<form action="/index" method="POST">
-    <button class="btn" type="submit" >Show Schema</button>
+Welcome!<br>
+
+
+Enter your query here: <br>
+
+<form id="qform" method="post">
+    SELECT <input type="text" name="columns" placeholder="column names">
+    FROM <input type="text" name="table" placeholder="table name">
+    WHERE <input type="text" name="condition" placeholder="condition"><br/><br/>
+    <input type="button" value="Submit query" onclick="query()">
 </form>
-<h1 style="color:  #a4a597;">{{msg}}</h1>
+
+<br>
+<span id = "result">Your result:</span>
+<script>
+        function query() {
+            $.ajax({
+                url: '/GetData',
+                type: 'POST',
+//                contentType: "application/json",
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+//                dataType: "application/json",
+//                dataType: "text",
+                data: $('#qform').serialize()
+            })
+                .done(function (msg) {
+                    $("#result").html(msg);
+                })
+        }
+
+</script>
+
 </body>
 </html>
