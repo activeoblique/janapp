@@ -1,0 +1,19 @@
+{
+    "name": "users",
+    "attributes": [
+        {
+            "name": "username",
+            "privacyLevel": {
+                "type": "public"
+            },
+            "type": "SQLString"
+        },
+        {
+            "name": "password",
+            "privacyLevel": {
+                "type": "public"
+            },
+            "type": "SQLString"
+        }
+    ]
+}
