@@ -33,13 +33,14 @@ def index():
     return render_template('login.html')
 
 
-# @app.route("/index", methods=['GET','POST'])
-# def index():
-#     # if request.method == "POST":
-#     #     contents = urllib.request.urlopen("http://209.2.226.238:4003/schema").read()
-#     #     print(contents)
-#     #     return render_template('index.html', msg = contents)
-#     return render_template('index.html')
+@app.route("/query", methods=['GET','POST'])
+def query():
+    if request.method == "GET":
+        if session['username']:
+    #     contents = urllib.request.urlopen("http://209.2.226.238:4003/schema").read()
+    #     print(contents)
+    #     return render_template('index.html', msg = contents)
+            return render_template('index.html',username = session['username'])
 
 @app.route("/login", methods=['GET','POST'])
 def login():
@@ -49,7 +50,7 @@ def login():
         print(username,password)
         if valid_user(username,password):
             session['username'] = username
-            return render_template('index.html')
+            return redirect(url_for('query'))
         print("Incorrect")
         return  render_template('login.html',err = "Incorrect username or password")
     return render_template('login.html')
