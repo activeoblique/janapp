@@ -4,23 +4,210 @@
     <meta charset="UTF-8">
     <title>Bank Database</title>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        html{
+            height: 100%;
+        }
+        body {
+            height: 100%;
+            background-image:url("../static/backgroud.jpg");
+            background-repeat: no-repeat;
+            background-attachment:fixed;
+        }
+
+        #container {
+            background-color: rgba(255, 255, 255, 0.6);
+            height: 100%;
+            width: 100%;
+        }
+
+        #login_bar{
+            width:300px;
+            position:fixed;
+            z-index:10;
+            border:0 solid black;
+            top:-5px;
+            right:150px;
+            display:inline-block;
+        }
+        #login_signup{
+            float:right;
+            display:inline;
+        }
+        #login_signup> li{
+            height: 50px;
+            width: 200px;
+            font-family:sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+            color:white;
+            padding:5px;
+            display:inline-block;
+            background-color:#F87982;
+            border-radius:5px;
+            -moz-border-radius:5px;
+            -webkit-border-radius: 5px;
+            -o-border-radius:5px;
+            box-shadow: #F87982 0px 0px 10px;
+            -moz-box-shadow: #F87982 0px 0px 10px;
+            -webkit-box-shadow: #F87982 0px 0px 10px;
+            -o-box-shadow:#F87982 0px 0px 10px;
+        }
+        #login_signup li> a{
+            height: 50px;
+            width: 200px;
+            font-family:sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+            color:white;
+            padding:5px;
+            display:inline-block;
+            background-color:#FE4E5B;
+            border-radius:5px;
+            -moz-border-radius:5px;
+            -webkit-border-radius: 5px;
+            -o-border-radius:5px;
+            box-shadow: #FE4E5B 0px 0px 10px;
+            -moz-box-shadow: #FE4E5B 0px 0px 10px;
+            -webkit-box-shadow: #FE4E5B 0px 0px 10px;
+            -o-box-shadow:#FE4E5B 0px 0px 10px;
+        }
+        #login_signup li span{
+            font-size: 22px;
+            display:inline-block;
+        }
+        #login_signup li a:hover{
+            cursor: pointer;
+            box-shadow: rgb(255,255,255) 0px 0px 5px;
+            -moz-box-shadow: rgb(255,255,255) 0px 0px 5px;
+            -webkit-box-shadow: rgb(255,255,255) 0px 0px 5px;
+            -o-box-shadow:rgb(255,255,255) 0px 0px 5px;
+            border-radius: 2px;
+            background-color: white;
+            color:#9E3F3F;
+        }
+
+        #qform {
+            margin-top: 10%;
+            margin-left:auto;
+            margin-right:auto;
+            max-width: 500px;
+            background: #F7F7F7;
+            padding: 25px 15px 25px 10px;
+            font: 12px Georgia, "Times New Roman", Times, serif;
+            color: #888;
+            text-shadow: 1px 1px 1px #FFF;
+            border:1px solid #E4E4E4;
+        }
+        #qform h1 {
+            font-size: 25px;
+            padding: 0px 0px 10px 40px;
+            display: block;
+            border-bottom:1px solid #E4E4E4;
+            margin: -10px -15px 30px -10px;;
+            color: #888;
+        }
+        #qform h1>span {
+            display: block;
+            font-size: 11px;
+        }
+        #qform label {
+            display: block;
+            margin: 0px;
+        }
+        #qform label>span {
+            float: left;
+            width: 20%;
+            text-align: right;
+            padding-right: 10px;
+            margin-top: 10px;
+            color: #888;
+        }
+        #qform input[type="text"], .basic-grey input[type="email"], .basic-grey textarea, .basic-grey select {
+            border: 1px solid #DADADA;
+            color: #888;
+            height: 30px;
+            margin-bottom: 16px;
+            margin-right: 6px;
+            margin-top: 2px;
+            outline: 0 none;
+            padding: 3px 3px 3px 5px;
+            width: 70%;
+            font-size: 12px;
+            line-height:15px;
+            box-shadow: inset 0px 1px 4px #ECECEC;
+            -moz-box-shadow: inset 0px 1px 4px #ECECEC;
+            -webkit-box-shadow: inset 0px 1px 4px #ECECEC;
+        }
+        #qform textarea{
+            padding: 5px 3px 3px 5px;
+        }
+        #qform textarea{
+            height:100px;
+        }
+        #qform input[type="button"] {
+            background: #E27575;
+            border: none;
+            padding: 10px 25px 10px 25px;
+            color: #FFF;
+            box-shadow: 1px 1px 5px #B6B6B6;
+            border-radius: 3px;
+            text-shadow: 1px 1px 1px #9E3F3F;
+            cursor: pointer;
+        }
+        #qform input[type="button"]:hover {
+            background: #CF9A9D
+        }
+
+        #qform span {
+            width: 100%;
+            height: 50%;
+            border: 1px dashed #9E3F3F;
+        }
+
+
+
+
+    </style>
 </head>
-Welcome!{{username}}<br>
+<body>
+<div id="container">
 
+<div id="wrapper">
+    <div id="login_bar" style="text-align: right">
+        <ul id="login_signup">
+            <li>Welcome!, {{username}}!<span>&#x25c0;</span></li>
+            <li><a href="#" id="sign_link">Log Out <span>&#x25c0;</span></a></li>
+        </ul>
+    </div>
+</div>
 
-Enter your query here: <br>
 
 <form id="qform" method="post">
-    SELECT <input type="text" name="columns" placeholder="column names">
-    FROM <input type="text" name="table" placeholder="table name">
-    WHERE <input type="text" name="condition" placeholder="condition"><br/><br/>
+    Enter your query here: <br>
+    <br>
+    SELECT <input type="text" name="columns" id = "columns" placeholder="column names"><br>
+    FROM <input type="text" name="table" id="table" placeholder="table name"><br>
+    WHERE <input type="text" name="condition" id="condition"  placeholder="condition"><br/><br/>
     <input type="button" value="Submit query" onclick="query()">
+    <br>
+    <br>
+    Your query result is:<br>
+    <br>
+    <span id = "result">Result</span>
 </form>
 
 <br>
-<span id = "result">Your result:</span>
 <script>
         function query() {
+            // Check for SQL injection attack
+            var field1 = document.getElementById("columns");
+            var field2 = document.getElementById("table");
+            var field3 = document.getElementById("condition");
+            if(SqlInvalid(field1)||SqlInvalid(field2)||SqlInvalid(field3)){
+                alert("You entered illegal words! Are you trying to attack us?");
+                return ;
+            }
             $.ajax({
                 url: '/GetData',
                 type: 'POST',
@@ -35,7 +222,11 @@ Enter your query here: <br>
                 })
         }
 
+        function SqlInvalid(oField) {
+            re = /select|and|or|insert|union|join|truncate|drop|update|delete|exec|count|'|"|;|%/i;
+            return re.test(oField.value);
+        }
 </script>
-
+</div>
 </body>
 </html>

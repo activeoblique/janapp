@@ -68,7 +68,7 @@ def GetData():
         "query": query,
         "username": "jana"
     }
-    query_url = "http://192.168.1.13:4003/query"
+    query_url = "http://160.39.161.34:4003/query"
     req = urllib.request.Request(query_url)
     req.add_header('Content-Type', 'application/json; charset=utf-8')
     data = json.dumps(body)
@@ -76,7 +76,7 @@ def GetData():
     req.add_header('Content-Length', len(data))
     response = urllib.request.urlopen(req, data)
     result = response.read().decode('utf-8')
-    print(type(result))
+    #print(type(result))
     return result
 
 
