@@ -25,12 +25,10 @@ def valid_user(username,password):
 @app.route("/", methods=['GET','POST'])
 def index():
     if 'username' in session:
-        return 'Logged in as %s' % escape(session['username'])
-    return 'You are not logged in'
+        return redirect(url_for('query'))
+    return redirect(url_for('login'))
     print(session)
-    if request.method == "POST":
-        return render_template('index.html')
-    return render_template('login.html')
+
 
 
 @app.route("/query", methods=['GET','POST'])
@@ -54,6 +52,12 @@ def login():
         print("Incorrect")
         return  render_template('login.html',err = "Incorrect username or password")
     return render_template('login.html')
+
+@app.route("/logout")
+def logout():
+    # remove the username from the session if it's there
+    session.pop('username', None)
+    return redirect(url_for('login'))
 
 @app.route("/GetData", methods=['GET','POST'])
 def GetData():

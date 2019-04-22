@@ -1,0 +1,9 @@
+DEFAULT DENY FOR DATA;
+DEFAULT DENY FOR POLICY;
+
+USER WITH username = 'jana' IS SUPERUSER;
+
+USER WITH username = 'olivia'
+   MAY READ DETAILS of accounts.* 
+   WHERE bank_id = 1;
+
