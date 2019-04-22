@@ -54,7 +54,7 @@ def login():
         print("Incorrect")
         return  render_template('login.html',err = "Incorrect username or password")
     return render_template('login.html')
-    
+
 @app.route("/GetData", methods=['GET','POST'])
 def GetData():
     columns = request.form.get("columns")
@@ -68,7 +68,7 @@ def GetData():
         "query": query,
         "username": "jana"
     }
-    query_url = "http://192.168.1.13:4003/query"
+    query_url = "http://{{ request.host.split(':')[0] }}/query"
     req = urllib.request.Request(query_url)
     req.add_header('Content-Type', 'application/json; charset=utf-8')
     data = json.dumps(body)
