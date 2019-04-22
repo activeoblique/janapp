@@ -204,10 +204,10 @@
             var field1 = document.getElementById("columns");
             var field2 = document.getElementById("table");
             var field3 = document.getElementById("condition");
-            if(SqlInvalid(field1)||SqlInvalid(field2)||SqlInvalid(field3)){
-                alert("You entered illegal words! Are you trying to attack us?");
-                return ;
-            }
+            // if(SqlInvalid(field1)||SqlInvalid(field2)||SqlInvalid(field3)){
+            //     alert("You entered illegal words! Are you trying to attack us?");
+            //     return ;
+            // }
             $.ajax({
                 url: '/GetData',
                 type: 'POST',
