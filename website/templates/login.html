@@ -6,19 +6,21 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <link type="text/css" rel="stylesheet" href="../static/login.css"/>
     <script type="text/javascript" src="../static/login.js"></script>
+    <style>
+    </style>
 </head>
 <body>
 <div id="home">
     <form id="login" action="/login" class="current1" method="post">
-        <h3>Bank Login</h3>
+        <h3 style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif">Bank Login</h3>
         {% if err %}
-        <p style="color:red">{{ err }}</p>
+        <p style="color:red;font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">{{ err }}</p>
         {% endif %}
         <label>Username<input type="text" name="username" style="width:215px;" /><span>no username</span></label>
         <label>Password<input type="password" name="password" style="width:215px;"/><span>no password</span></label>
-        <button type="submit" >Login</button>
+        <button type="submit" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">Login</button>
     </form>
-    <h1 style="color: #EBEBEB; text-align: center;"> Welcome to Bank Database System! </h1>
+    <h1 style="color: #EBEBEB; font-family: Helvetica Neue, Helvetica, Arial, sans-serif;; text-align: center;"> Welcome to Bank Database System! </h1>
 </div>
 </body>
 </html>

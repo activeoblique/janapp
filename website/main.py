@@ -11,7 +11,7 @@ def valid_user(username,password):
     #connect to jana and check
     myurl = "http://localhost:4003/query"
     req = urllib.request.Request(myurl)
-    data = json.dumps({"query":"SELECT * FROM users", "username":"jana"})
+    data = json.dumps({"query":"SELECT * FROM users", "username":"ednein"})
     print(data)
     req.add_header('Content-Type', 'application/json; charset=utf-8')
     data = data.encode('utf8')
@@ -73,7 +73,8 @@ def GetData():
         "username": "jana"
     }
 
-    query_url = "http://{{ request.host.split(':')[0] }}/query"
+    query_url = "http://localhost:4003/query"
+    print("query_url",query_url)
     req = urllib.request.Request(query_url)
     req.add_header('Content-Type', 'application/json; charset=utf-8')
     data = json.dumps(body)
