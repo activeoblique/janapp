@@ -87,7 +87,14 @@
             background-color: white;
             color:#9E3F3F;
         }
-
+        #cnm{
+            width: 70%;
+            background: #F7F7F7;
+            font: 20px Helvetica Neue, Helvetica, Arial, sans-serif;
+            color: #888;
+            text-shadow: 1px 1px 1px #FFF;
+            border:1px solid #E4E4E4;
+        }
         #qform {
             width: 70%;
             height: 70%;
@@ -100,6 +107,7 @@
             color: #888;
             text-shadow: 1px 1px 1px #FFF;
             border:1px solid #E4E4E4;
+            z-index:-11;
         }
         #qform h1 {
             font-size: 25px;
@@ -206,14 +214,13 @@
     <input type="button" value="Submit query" onclick="query()">
     <br>
     <br>
-    <form action="/download" method="POST">
+    <span id = "result" >Result</span>
+</form>
+    <form id="cnm" action="/download" method="POST" style = "z-index:11">
         Your query result is: <button name="downloadBtn" id="exportbutton" style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
             text-shadow: 1px 1px 1px #9E3F3F;
             cursor: pointer;">Export Result</button>
     </form>
-    <span id = "result">Result</span>
-</form>
-
 <br>
 <script>
         function query() {

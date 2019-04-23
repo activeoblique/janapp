@@ -3,7 +3,7 @@ app = Flask(__name__)
 import sys
 import urllib.request
 import json
-
+import pandas as pd
 
 app.secret_key = b'19960223'
 #check whether it is a valid user
@@ -83,7 +83,14 @@ def GetData():
     req.add_header('Content-Length', len(data))
     response = urllib.request.urlopen(req, data)
     result = response.read().decode('utf-8')
-    #print(type(result))
+    file = open('./your_hmp_result.txt', "w")
+    file.write(result)
+    # result = result['rows']
+    # print(type(result))
+    # length = len(result[0])
+    # columns_name = [i for i in range(length)]
+    # test = pd.DataFrame(columns=columns_name, data=result)
+    # test.to_csv('./your_hmp_result.csv')
     return result
 
 def get_ratio(table,username):
@@ -114,20 +121,22 @@ def get_ratio(table,username):
 @app.route("/basic_analysis")
 def basci_analysis():
     print(session)
+    ratio = []
     if 'username' in session:
         username = session['username']
         for table in ['card','accounts','loan','disp']:
-            ratio = get_ratio('card',username)
+            ratio.append(get_ratio(table,username))
         print(ratio)
     return "you are not login"
     
 @app.route('/download', methods=['POST'])
 def download():
     # change filename for download
-    filename = "query_result.csv"
+    filename = "query_result.txt"
+    print("hmp")
     # create response
     # response = make_response(send_file(UPLOAD_FOLDER + "result.csv"))
-    response = make_response(send_file("result.csv"))
+    response = make_response(send_file("./your_hmp_result.txt"))
     response.headers['Content-Disposition'] = 'attachment; filename=' + filename
     response.mimetype = 'text/csv'
     return response
