@@ -206,46 +206,31 @@
 
 
 <form id="qform" method="post" >
-    Enter your query here: <br>
+    Enter the account you would like to predict here: <br>
     <br>
-    SELECT<br> <input align="center" type="text" name="columns" id = "columns" placeholder="column names" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif"><br>
-    FROM <br><input type="text" name="table" id="table" placeholder="table name" style ="font-family: Helvetica Neue, Helvetica, Arial, sans-serif;"><br>
-    WHERE <br><input type="text" name="condition" id="condition"  placeholder="condition" style = "font-family: Helvetica Neue, Helvetica, Arial, sans-serif;"><br/><br/>
+    account_id<br> <input align="center" type="text" name="account_id" id = "account_id" placeholder="column names" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif"><br>
     <input type="button" value="Submit query" onclick="query()">
     <br>
     <br>
     <span id = "result" >Result</span>
 </form>
-    <form id="cnm" action="/download" method="POST" style = "z-index:11">
-        Your query result is: <button name="downloadBtn" id="exportbutton" style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
-            text-shadow: 1px 1px 1px #9E3F3F;
-            cursor: pointer;">Export Result</button>
-    </form>
-
 <br>
-    <form action="/basic_analysis" method="post" style="height: auto; width: 70%;background: #F7F7F7; ">
+    <form action="/" method="GET" style="height: auto; width: 70%;background: #F7F7F7; ">
         <button style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
             text-shadow: 1px 1px 1px #9E3F3F;
-            cursor: pointer;">Get Aggregated Analysis</button>
-        <p>{{analysis}}</p>
-    </form>
-    <form action="/personal_analysis" method="get" style="height: auto; width: 70%;background: #F7F7F7; ">
-        <button style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
-            text-shadow: 1px 1px 1px #9E3F3F;
-            cursor: pointer;">Predict an account next transaction</button>
+            cursor: pointer;">back to query</button>
     </form>
 <script>
         function query() {
             // Check for SQL injection attack
-            var field1 = document.getElementById("columns");
-            var field2 = document.getElementById("table");
-            var field3 = document.getElementById("condition");
-             if(SqlInvalid(field1)||SqlInvalid(field2)||SqlInvalid(field3)){
+            var field1 = document.getElementById("account_id");
+            console.log("???")
+             if(SqlInvalid(field1)){
                  alert("You entered illegal words! Are you trying to attack us?");
                  return ;
              }
             $.ajax({
-                url: '/GetData',
+                url: '/personal_analysis',
                 type: 'POST',
 //                contentType: "application/json",
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",

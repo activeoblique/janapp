@@ -116,17 +116,23 @@ def get_ratio(table,username):
     try: overall = response['rows'][0][0]
     except:
         overall = 0
-    print(yours / overall)
-
-@app.route("/basic_analysis")
+    if overall == 0:
+        return 0
+    return yours / overall
+    
+@app.route("/basic_analysis",methods = ['POST'])
 def basci_analysis():
     print(session)
     ratio = []
     if 'username' in session:
+        result = ""
         username = session['username']
-        for table in ['card','accounts','loan','disp']:
-            ratio.append(get_ratio(table,username))
-        print(ratio)
+
+        tables = ['card','accounts','loan','disp']
+        for table in tables:
+            ratio = get_ratio(table,username)
+            result += "Your portion in " + table + " is " + str(ratio) + "\n"
+        return render_template('index.html', analysis = result)
     return "you are not login"
     
 @app.route('/download', methods=['POST'])
@@ -141,6 +147,34 @@ def download():
     response.mimetype = 'text/csv'
     return response
 
-
+@app.route('/personal_analysis',methods = ['POST','GET'])
+def personal_analysis():
+    if request.method == 'GET':
+        if 'username' in session:
+            return render_template('personal_analysis.html')
+    else:
+        account_id = request.form['account_id']
+        if 'username' in session:
+            username = session['username']
+            print("???")
+            query = "select * from accounts where account_id = " + account_id
+            print(username)
+            print(query)
+            body = {
+                "query": query,
+                "username": username
+            }
+            query_url = "http://localhost:4003/query"
+            print("query_url", query_url)
+            req = urllib.request.Request(query_url)
+            req.add_header('Content-Type', 'application/json; charset=utf-8')
+            data = json.dumps(body)
+            data = data.encode('utf-8')
+            req.add_header('Content-Length', len(data))
+            response = urllib.request.urlopen(req, data)
+            result = json.loads(response.read().decode('utf-8'))
+            msg = 'The next transaction amount will be'  + result['rows'][0][5] +", then next transaction type will be" + result['rows'][0][3] +' .'
+            return msg
+    return "you are not login"
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
