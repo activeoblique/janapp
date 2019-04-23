@@ -17,6 +17,8 @@ USER WITH username = 'yh'
   MAY READ AGGREGATES OF orders.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
 USER WITH username = 'yh'
   MAY READ AGGREGATES OF trans.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'yh'
+  MAY READ AGGREGATES OF employees.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
 
 USER WITH username = 'jh'
   MAY READ AGGREGATES OF accounts.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
@@ -32,6 +34,8 @@ USER WITH username = 'jh'
   MAY READ AGGREGATES OF orders.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
 USER WITH username = 'jh'
   MAY READ AGGREGATES OF trans.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
+USER WITH username = 'jh'
+  MAY READ AGGREGATES OF employees.* USING DP_HISTOGRAM, DP_SUM, DP_AVG;
 
 
 USER WITH username = 'yh'
@@ -55,6 +59,9 @@ USER WITH username = 'yh'
 USER WITH username = 'yh'
   MAY READ DETAILS OF trans.*
   WHERE bank_id = 1;
+USER WITH username = 'yh'
+  MAY READ DETAILS OF employees.*
+  WHERE bank_id = 1;
 
 
 USER WITH username = 'jh'
@@ -77,4 +84,7 @@ USER WITH username = 'jh'
   WHERE bank_id = 1;
 USER WITH username = 'jh'
   MAY READ DETAILS OF trans.*
+  WHERE bank_id = 1;
+USER WITH username = 'jh'
+  MAY READ DETAILS OF employees.*
   WHERE bank_id = 1;
