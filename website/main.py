@@ -65,10 +65,13 @@ def GetData():
     table = request.form.get("table")
     condition = request.form.get("condition")
     username = session['username']
-    print(columns)
-    print(table)
-    print(condition)
+    if condition:
+        condition
+
+    print("???")
     query = "select "+ columns + " from " + table + " where " + condition
+    print(username)
+    print(query)
     body = {
         "query": query,
         "username": username
@@ -85,6 +88,44 @@ def GetData():
     result = response.read().decode('utf-8')
     #print(type(result))
     return result
+
+def get_ratio(table,username):
+    query = "select count(*) from " + table
+    data = json.dumps({"query": "SELECT count(*) FROM " + table +" WHERE bank_id = 1", "username": username})
+    print(data)
+    query_url = "http://localhost:4003/query"
+    print("query_url",query_url)
+    req = urllib.request.Request(query_url)
+    req.add_header('Content-Type', 'application/json; charset=utf-8')
+    data = data.encode('utf8')
+    response = json.loads(urllib.request.urlopen(req, data).read().decode('utf8'))
+    try: yours = response['rows'][0][0]
+    except:
+        yours = 0
+    # query whole database using DP_COUNT
+    data = json.dumps({"query": "SELECT DP_COUNT(0.1, *) FROM " + table, "username": "ednein"})
+    print(data)
+    print(yours)
+    req.add_header('Content-Type', 'application/json; charset=utf-8')
+    data = data.encode('utf8')
+    response = json.loads(urllib.request.urlopen(req, data).read().decode('utf8'))
+    try: overall = response['rows'][0][0]
+    except:
+        overall = 0
+    print(yours / overall)
+
+@app.route("/basic_analysis")
+def basci_analysis():
+    print(session)
+    if 'username' in session:
+        username = session['username']
+        for table in ['card','accounts','loan','disp']
+            ratio = get_ratio('card',username)
+        print(ratio)
+
+
+
+    return "you are not login"
 
 
 if __name__ == "__main__":
