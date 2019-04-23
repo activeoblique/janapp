@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f4281691-fa11-426a-b5ed-70c7df63dc5d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/csv/users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/csv/users.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dtccpolicy.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dtccpolicy.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -81,7 +79,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/website/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
+            <state relative-caret-position="299">
               <caret line="121" column="55" selection-start-line="121" selection-start-column="55" selection-end-line="121" selection-end-column="55" />
             </state>
           </provider>
@@ -167,6 +165,11 @@
             <path>
               <item name="janapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="janapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="janapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="janapp" type="462c0819:PsiDirectoryNode" />
+              <item name="csv" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="janapp" type="b2602c69:ProjectViewProjectNode" />
@@ -292,13 +295,6 @@
     <entry file="file://$PROJECT_DIR$/json/users.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/csv/users.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -337,9 +333,16 @@
     <entry file="file://$PROJECT_DIR$/policy.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/csv/users.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
+        <state relative-caret-position="299">
           <caret line="121" column="55" selection-start-line="121" selection-start-column="55" selection-end-line="121" selection-end-column="55" />
         </state>
       </provider>

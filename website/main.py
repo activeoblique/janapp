@@ -119,7 +119,7 @@ def basci_analysis():
     print(session)
     if 'username' in session:
         username = session['username']
-        for table in ['card','accounts','loan','disp']
+        for table in ['card','accounts','loan','disp']:
             ratio = get_ratio('card',username)
         print(ratio)
 
