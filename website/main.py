@@ -110,16 +110,19 @@ def get_ratio(table,username):
     try: overall = response['rows'][0][0]
     except:
         overall = 0
-    print(yours / overall)
-
+    return yours / overall
+    
 @app.route("/basic_analysis")
 def basci_analysis():
     print(session)
     if 'username' in session:
+        result = ""
         username = session['username']
-        for table in ['card','accounts','loan','disp']:
+        tables = ['card','accounts','loan','disp']
+        for table in tables:
             ratio = get_ratio('card',username)
-        print(ratio)
+            result += "Your portion in " + table + " is " + str(ratio) + "\n"
+        return render_template('index.html', analysis = result)
     return "you are not login"
     
 @app.route('/download', methods=['POST'])
