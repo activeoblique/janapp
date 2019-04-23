@@ -96,7 +96,7 @@
             margin-right:auto;
             background: #F7F7F7;
             padding: 25px 15px 25px 10px;
-            font: 25px Helvetica Neue, Helvetica, Arial, sans-serif;
+            font: 20px Helvetica Neue, Helvetica, Arial, sans-serif;
             color: #888;
             text-shadow: 1px 1px 1px #FFF;
             border:1px solid #E4E4E4;
@@ -128,7 +128,7 @@
         #qform input[type="text"], .basic-grey input[type="email"], .basic-grey textarea, .basic-grey select {
             border: 1px solid #DADADA;
             color: #888;
-            height: 30px;
+            height: 45px;
             margin-bottom: 16px;
             margin-right: 6px;
             margin-top: 2px;
@@ -167,6 +167,15 @@
             border: 1px dashed #9E3F3F;
         }
 
+        .exportbutton {
+            background: #984B4B;
+            width: 120px;
+        }
+
+        .exportbutton:hover{
+            background-color: #66CDAA;
+        }
+
 
 
 
@@ -187,31 +196,6 @@
 
 <div id="container" align="center">
 
-<!--<div id="wrapper">-->
-<!--    <div id="login_bar" style="text-align: right">-->
-<!--        <ul id="login_signup">-->
-<!--            <li>Welcome!, {{username}}!<span>&#x25c0;</span></li>-->
-<!--            <li><a href="/logout" id="sign_link">Log Out <span>&#x25c0;</span></a></li>-->
-<!--        </ul>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<form>-->
-<!--    Enter your query here:-->
-<!--  <div class="form-group">-->
-<!--    <label for="exampleInputEmail1">Email address</label>-->
-<!--    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
-<!--    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-<!--  </div>-->
-<!--  <div class="form-group">-->
-<!--    <label for="exampleInputPassword1">Password</label>-->
-<!--    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
-<!--  </div>-->
-<!--  <div class="form-group form-check">-->
-<!--    <input type="checkbox" class="form-check-input" id="exampleCheck1">-->
-<!--    <label class="form-check-label" for="exampleCheck1">Check me out</label>-->
-<!--  </div>-->
-<!--  <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--</form>-->
 
 <form id="qform" method="post" >
     Enter your query here: <br>
@@ -222,8 +206,11 @@
     <input type="button" value="Submit query" onclick="query()">
     <br>
     <br>
-    Your query result is:<br>
-    <br>
+    <form action="/download" method="POST">
+        Your query result is: <button name="downloadBtn" id="exportbutton" style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
+            text-shadow: 1px 1px 1px #9E3F3F;
+            cursor: pointer;">Export Result</button>
+    </form>
     <span id = "result">Result</span>
 </form>
 
@@ -234,10 +221,10 @@
             var field1 = document.getElementById("columns");
             var field2 = document.getElementById("table");
             var field3 = document.getElementById("condition");
-            // if(SqlInvalid(field1)||SqlInvalid(field2)||SqlInvalid(field3)){
-            //     alert("You entered illegal words! Are you trying to attack us?");
-            //     return ;
-            // }
+             if(SqlInvalid(field1)||SqlInvalid(field2)||SqlInvalid(field3)){
+                 alert("You entered illegal words! Are you trying to attack us?");
+                 return ;
+             }
             $.ajax({
                 url: '/GetData',
                 type: 'POST',
@@ -253,7 +240,7 @@
         }
 
         function SqlInvalid(oField) {
-            re = /select|and|or|insert|union|join|truncate|drop|update|delete|exec|count|'|"|;|%/i;
+            re = /select|and|or|insert|union|join|truncate|drop|update|delete|exec|'|"|;|%/i;
             return re.test(oField.value);
         }
 </script>

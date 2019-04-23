@@ -29,8 +29,6 @@ def index():
     return redirect(url_for('login'))
     print(session)
 
-
-
 @app.route("/query", methods=['GET','POST'])
 def query():
     if request.method == "GET":
@@ -121,10 +119,18 @@ def basci_analysis():
         for table in ['card','accounts','loan','disp']:
             ratio = get_ratio('card',username)
         print(ratio)
-
-
-
     return "you are not login"
+    
+@app.route('/download', methods=['POST'])
+def download():
+    # change filename for download
+    filename = "query_result.csv"
+    # create response
+    # response = make_response(send_file(UPLOAD_FOLDER + "result.csv"))
+    response = make_response(send_file("result.csv"))
+    response.headers['Content-Disposition'] = 'attachment; filename=' + filename
+    response.mimetype = 'text/csv'
+    return response
 
 
 if __name__ == "__main__":
