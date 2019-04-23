@@ -1,0 +1,58 @@
+{
+    "name": "employees",
+    "attributes": [
+        {
+            "constraints": [
+		{
+		  "value":10,
+		  "type": "padTo"
+		}
+	    ],
+	    "name": "name",
+            "privacyLevel": {
+                "type": "private"
+            },
+            "type": "SQLString"
+        },
+	{
+	    "name": "age",
+	    "privacyLevel": {
+		"type": "private",
+		"operations": [
+		  {
+		    "type":"EqualityComparison",
+		    "index": false
+		  }
+		]
+	    },
+	    "type": "SQLUnsignedInt32"
+	},
+        {
+            "constraints": [
+		{
+		  "value": 10,
+		  "type": "padTo"
+		}
+	    ],
+	    "name": "department",
+            "privacyLevel": {
+                "type": "public"
+            },
+            "type": "SQLString"
+        },
+	{
+	    "constraints": [],
+	    "name": "bank_id",
+	    "privacyLevel": {
+		"type": "private",
+		"operations" : [
+		  {
+		    "type": "EqualityComparison",
+		    "index": true
+	  	  }
+		]
+	    },
+	    "type": "SQLUnsignedInt32"
+	}
+    ]
+}
