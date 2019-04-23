@@ -64,13 +64,14 @@ def GetData():
     columns = request.form.get("columns")
     table = request.form.get("table")
     condition = request.form.get("condition")
+    username = session['username']
     print(columns)
     print(table)
     print(condition)
     query = "select "+ columns + " from " + table + " where " + condition
     body = {
         "query": query,
-        "username": "jana"
+        "username": username
     }
 
     query_url = "http://localhost:4003/query"
