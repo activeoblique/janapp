@@ -66,10 +66,9 @@ def GetData():
     condition = request.form.get("condition")
     username = session['username']
     if condition:
-        condition
-
+        condition = " where " + condition
     print("???")
-    query = "select "+ columns + " from " + table + " where " + condition
+    query = "select "+ columns + " from " + table + condition
     print(username)
     print(query)
     body = {
