@@ -27,16 +27,17 @@ def index():
     if 'username' in session:
         return redirect(url_for('query'))
     return redirect(url_for('login'))
-    print(session)
 
 @app.route("/query", methods=['GET','POST'])
 def query():
     if request.method == "GET":
-        if session['username']:
+        if 'username' in session:
     #     contents = urllib.request.urlopen("http://209.2.226.238:4003/schema").read()
     #     print(contents)
     #     return render_template('index.html', msg = contents)
             return render_template('index.html',username = session['username'])
+    return redirect(url_for('login'))
+
 
 @app.route("/login", methods=['GET','POST'])
 def login():
@@ -65,7 +66,6 @@ def GetData():
     username = session['username']
     if condition:
         condition = " where " + condition
-    print("???")
     query = "select "+ columns + " from " + table + condition
     print(username)
     print(query)
@@ -151,12 +151,12 @@ def download():
 def personal_analysis():
     if request.method == 'GET':
         if 'username' in session:
-            return render_template('personal_analysis.html')
+            return render_template('personal_analysis.html', username=session['username'])
+        return redirect(url_for('login'))
     else:
         account_id = request.form['account_id']
         if 'username' in session:
             username = session['username']
-            print("???")
             query = "select * from accounts where account_id = " + account_id
             print(username)
             print(query)
