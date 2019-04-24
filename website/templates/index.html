@@ -272,8 +272,9 @@
 //                dataType: "application/json",
 //                dataType: "text",
                 data: $('#qform').serialize()
+                success: CreateTable(data),
             })
-                .done(CreateTable(msg))
+                // .done(CreateTable(msg))
         }
 
         function SqlInvalid(oField) {
