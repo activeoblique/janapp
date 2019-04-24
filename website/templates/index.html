@@ -290,7 +290,7 @@
                     }
                 }
             }
-
+            console.log('1 checkpoint');
             var table = document.getElementById("result");
 
             var tr = table.insertRow(-1);
@@ -300,7 +300,7 @@
                 th.innerHTML = col[i];
                 tr.appendChild(th);
             }
-
+            console.log('2 checkpoint');
             for(var i = 0; i < json.length; i++) {
                 tr = table.insertRow(-1);
 
@@ -310,7 +310,7 @@
                 }
 
             }
-
+            console.log('3 checkpoint');
             var divContainer = document.getElementById("result");
             divContainer.innerHTML = "";
             divContainer.appendChild(table);
