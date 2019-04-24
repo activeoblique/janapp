@@ -241,7 +241,7 @@
             var field2 = document.getElementById("table");
             var field3 = document.getElementById("condition");
              if(SqlInvalid(field1)||SqlInvalid(field2)||SqlInvalid(field3)){
-                 alert("You entered illegal words! Are you trying to attack us?");
+                 alert("Invalid input");
                  return ;
              }
             $.ajax({
@@ -259,7 +259,7 @@
         }
 
         function SqlInvalid(oField) {
-            re = /select|and|or|insert|union|join|truncate|drop|update|delete|exec|'|"|;|%/i;
+            re = /select|id|and|or|insert|union|join|truncate|drop|update|delete|exec|sleep|--|'|"|;|%/i;
             return re.test(oField.value);
         }
 </script>
