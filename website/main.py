@@ -61,8 +61,11 @@ def logout():
 @app.route("/GetData", methods=['GET','POST'])
 def GetData():
     columns = request.form.get("columns")
+    print(type(columns))
     table = request.form.get("table")
+    print(type(table))
     condition = request.form.get("condition")
+    print(type(condition))
     username = session['username']
 
     query = ""
