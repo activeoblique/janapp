@@ -118,7 +118,7 @@ def GetData():
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
-    elif table = "orders":
+    elif table == "orders":
         colnames = ["order_id", "account_id", "bank_to", "account_to", "amount", "k_symbol", "bank_id"]
         if columns in colnames:
             if condition:
@@ -127,7 +127,7 @@ def GetData():
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
-    elif table = "trans":
+    elif table == "trans":
         colnames = ["trans_id", "account_id", "date", "type", "operation", "amount", "balance", "k_symbol", "bank", "account", "bank_id"]
         if columns in colnames:
             if condition:
