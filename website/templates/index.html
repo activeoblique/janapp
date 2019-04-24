@@ -291,9 +291,7 @@
 
         function CreateTable(ojson) {
             var json = [];
-            for(var i in ojson) {
-                json.push([i, ojson[i]]);
-            }
+            json.push(ojson);
 
             var col = [];
             for(var i = 0; i < json.length; i++) {
