@@ -191,8 +191,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark justify-content-end">
+<nav class="navbar navbar-dark bg-dark justify-content-end" style="top: 0; left: 0; z-index: 9999; width: 100%; height: auto; position: fixed">
   <ul class="nav justify-content-end">
+      <li class="nav-item">
+          <a class="nav-link" href="#qform" style ="color:white;font-size:25px;">Query</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#analysis" style ="color:white;font-size:25px;">Analysis</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#prediction" style ="color:white;font-size:25px;">Prediction</a>
+      </li>
+
   <li class="nav-item">
     <a class="nav-link" href="#" style ="color:white;font-size:25px;">Welcome! {{username}}</a>
   </li>
@@ -202,9 +212,7 @@
 </ul>
 </nav>
 
-<div id="container" align="center">
-
-
+<a name="qform">
 <form id="qform" method="post" >
     Enter your query here: <br>
     <br>
@@ -216,24 +224,36 @@
     <br>
     <span id = "result" >Result</span>
 </form>
-    <form id="cnm" action="/download" method="POST" style = "z-index:11">
+    <form id="cnm" action="/download" method="POST" style = "z-index:11; width: 70%; margin-top: 0;
+            margin-left:auto;
+            margin-right:auto;">
         Your query result is: <button name="downloadBtn" id="exportbutton" style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
             text-shadow: 1px 1px 1px #9E3F3F;
             cursor: pointer;">Export Result</button>
     </form>
-
+</a>
 <br>
-    <form action="/basic_analysis" method="post" style="height: auto; width: 70%;background: #F7F7F7; ">
+<a name="analysis">
+    <form action="/basic_analysis" method="post" style="height: 40%; width: 70%;background: #F7F7F7;
+            margin-top: 3%;
+            margin-left:auto;
+            margin-right:auto;">
         <button style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
             text-shadow: 1px 1px 1px #9E3F3F;
             cursor: pointer;">Get Aggregated Analysis</button>
         <p>{{analysis}}</p>
     </form>
-    <form action="/personal_analysis" method="get" style="height: auto; width: 70%;background: #F7F7F7; ">
+</a>
+<a name="prediction">
+    <form action="/personal_analysis" method="get" style="height: 40%; width: 70%;background: #F7F7F7;
+          margin-top: 3%;
+          margin-left:auto;
+          margin-right:auto;">
         <button style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
             text-shadow: 1px 1px 1px #9E3F3F;
             cursor: pointer;">Predict an account next transaction</button>
     </form>
+</a>
 <script>
         function query() {
             // Check for SQL injection attack
