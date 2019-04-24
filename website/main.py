@@ -11,7 +11,7 @@ def valid_user(username,password):
     #connect to jana and check
     myurl = "http://localhost:4003/query"
     req = urllib.request.Request(myurl)
-    data = json.dumps({"query":"SELECT * FROM users", "username":"ednein"})
+    data = json.dumps({"query":"SELECT * FROM users", "username":"jana"})
     print(data)
     req.add_header('Content-Type', 'application/json; charset=utf-8')
     data = data.encode('utf8')
@@ -176,7 +176,7 @@ def get_ratio(table,username):
     except:
         yours = 0
     # query whole database using DP_COUNT
-    data = json.dumps({"query": "SELECT DP_COUNT(0.1, *) FROM " + table, "username": "ednein"})
+    data = json.dumps({"query": "SELECT DP_COUNT(0.1, *) FROM " + table, "username": "jana"})
     print(data)
     print(yours)
     req.add_header('Content-Type', 'application/json; charset=utf-8')
