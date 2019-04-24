@@ -10,15 +10,15 @@ app.secret_key = b'19960223'
 #check whether it is a valid user
 def valid_user(username,password):
     #connect to jana and check
-    conn = psycopg2.connect(host="localhost",database="jana",user="ednein",port=4003)
-    if(conn):
+    try:
+        conn = psycopg2.connect(host="localhost",database="jana",user="ednein",port=4003)
         print("connected successfully")
-    else:
+    except:
         print("not connected")
-    cur = conn.cursor()
-    if(cur):
+    try:
+        cur = conn.cursor()
         print("cursor made successfully")
-    else:
+    except:
         print("no cursor")
     myurl = "http://localhost:4003/query"
     req = urllib.request.Request(myurl)
