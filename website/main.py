@@ -59,14 +59,12 @@ def logout():
 
 @app.route("/GetData", methods=['GET','POST'])
 def GetData():
-    columns = request.form.get("columns")
-    print(type(columns))
-    table = request.form.get("table")
-    print(type(table))
-    condition = request.form.get("condition")
-    print(type(condition))
+    columns = str(request.form.get("columns"))
+    table = str(request.form.get("table"))
+    condition = str(request.form.get("condition"))
     username = session['username']
     query = ""
+    check = []
     if table == "accounts":
         colnames = ["account_id", "district_id", "frequency", "date", "bank_id"]
         if columns in colnames:
