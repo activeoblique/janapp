@@ -159,7 +159,7 @@ def GetData():
     print(result_json)
     file = open('./your_hmp_result.txt', "w")
     file.write(result)
-    return result
+    return result_json
 
 def get_ratio(table,username):
     query = "select count(*) from " + table
