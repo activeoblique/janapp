@@ -63,7 +63,7 @@ def GetData():
     table = request.form.get("table")
     condition = request.form.get("condition")
     username = session['username']
-
+    query = ""
     if table == "accounts":
         colnames = ["account_id", "district_id", "frequency", "date", "bank_id"]
         if columns in colnames:
