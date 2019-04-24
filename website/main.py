@@ -155,7 +155,7 @@ def GetData():
     result = ast.literal_eval(response.read().decode('utf-8'))
     result.pop("durationMillis")
     result = str(result)
-    result_json = json.loads(result)
+    result_json = json.dumps(result)
     print(result_json)
     file = open('./your_hmp_result.txt', "w")
     file.write(result)
