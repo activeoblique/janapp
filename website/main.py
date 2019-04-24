@@ -152,6 +152,8 @@ def GetData():
     req.add_header('Content-Length', len(data))
     response = urllib.request.urlopen(req, data)
     result = response.read().decode('utf-8')
+    result_json = json.loads(result)
+    print(result_json)
     file = open('./your_hmp_result.txt', "w")
     file.write(result)
     # result = result['rows']
