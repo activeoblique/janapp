@@ -72,7 +72,6 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
-            print("???")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
@@ -81,7 +80,6 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
-            print("???")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
@@ -90,7 +88,6 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
-            print("???")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
@@ -99,7 +96,6 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
-            print("???")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
@@ -108,7 +104,6 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
-            print("???")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
@@ -117,7 +112,6 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
-            print("???")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
@@ -126,7 +120,6 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
-            print("???")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
@@ -135,7 +128,6 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
-            print("???")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
