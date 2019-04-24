@@ -69,7 +69,7 @@ def GetData():
     check = []
     if table == "accounts":
         colnames = ["account_id", "district_id", "frequency", "date", "bank_id"]
-        if columns.contains(colnames):
+        if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
             print("???")
@@ -78,7 +78,7 @@ def GetData():
             print("no such column")
     elif table == "card":
         colnames = ["card_id", "disp_id", "type", "issued", "bank_id"]
-        if columns.contains(colnames):
+        if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
             print("???")
@@ -87,7 +87,7 @@ def GetData():
             print("no such column")
     elif table == "client":
         colnames = ["client_id", "birth_number", "district_id", "bank_id"]
-        if columns.contains(colnames):
+        if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
             print("???")
@@ -96,7 +96,7 @@ def GetData():
             print("no such column")
     elif table == "disp":
         colnames = ["disp_id", "client_id", "account_id", "type", "bank_id"]
-        if columns.contains(colnames):
+        if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
             print("???")
@@ -105,7 +105,7 @@ def GetData():
             print("no such column")
     elif table == "employees":
         colnames = ["name", "age", "department", "bank_id"]
-        if columns.contains(colnames):
+        if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
             print("???")
@@ -114,7 +114,7 @@ def GetData():
             print("no such column")
     elif table == "loan":
         colnames = ["loan_id", "account_id", "date", "amount", "duration", "payments", "status", "bank_id"]
-        if columns.contains(colnames):
+        if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
             print("???")
@@ -123,7 +123,7 @@ def GetData():
             print("no such column")
     elif table == "orders":
         colnames = ["order_id", "account_id", "bank_to", "account_to", "amount", "k_symbol", "bank_id"]
-        if columns.contains(colnames):
+        if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
             print("???")
@@ -132,7 +132,7 @@ def GetData():
             print("no such column")
     elif table == "trans":
         colnames = ["trans_id", "account_id", "date", "type", "operation", "amount", "balance", "k_symbol", "bank", "account", "bank_id"]
-        if columns.contains(colnames):
+        if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
             print("???")
