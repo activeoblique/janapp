@@ -3,12 +3,23 @@ app = Flask(__name__)
 import sys
 import urllib.request
 import json
-import pandas as pd
+import psycopg2
+
 
 app.secret_key = b'19960223'
 #check whether it is a valid user
 def valid_user(username,password):
     #connect to jana and check
+    conn = psycopg2.connect(host="localhost",database="jana",user="ednein",port=4003)
+    if(conn):
+        print("connected successfully")
+    else:
+        print("not connected")
+    cur = conn.cursor()
+    if(cur):
+        print("cursor made successfully")
+    else:
+        print("no cursor")
     myurl = "http://localhost:4003/query"
     req = urllib.request.Request(myurl)
     data = json.dumps({"query":"SELECT * FROM users", "username":"ednein"})
@@ -119,7 +130,7 @@ def get_ratio(table,username):
     if overall == 0:
         return 0
     return yours / overall
-    
+
 @app.route("/basic_analysis",methods = ['POST'])
 def basci_analysis():
     print(session)
@@ -134,7 +145,7 @@ def basci_analysis():
             result += "Your portion in " + table + " is " + str(ratio) + "\n"
         return render_template('index.html', analysis = result)
     return "you are not login"
-    
+
 @app.route('/download', methods=['POST'])
 def download():
     # change filename for download
