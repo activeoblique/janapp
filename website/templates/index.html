@@ -267,14 +267,19 @@
             $.ajax({
                 url: '/GetData',
                 type: 'POST',
-//                contentType: "application/json",
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
-//                dataType: "application/json",
-//                dataType: "text",
-                data: $('#qform').serialize()
-                success: CreateTable(data),
+                data: $('#qform').serialize(),
+                success: function (data) {
+                    $('#result').html(data);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log('xHR: ' + xhr);
+                    console.log('ajaxOption: ' + ajaxOptions);
+                    console.log('thrownError: ' + thrownError);
+                },
+
             })
-                // .done(CreateTable(msg))
+                // .done(CreateTable(data))
         }
 
         function SqlInvalid(oField) {
