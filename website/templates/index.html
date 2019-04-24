@@ -269,10 +269,10 @@
                 url: '/GetData',
                 type: 'POST',
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                // data: $('#qform').serialize(),
+                data: $('#qform').serialize(),
                 success: function (data) {
                     // $('#result').html(data);
-                    CreateTable(data);
+                    CreateTable(JSON.parse(data));
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log('xHR: ' + xhr);
@@ -298,6 +298,7 @@
                     }
                 }
             }
+            console.log(json)
             console.log(typeof(json))
             console.log('1 checkpoint');
             var table = document.createElement("table");
