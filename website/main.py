@@ -3,23 +3,12 @@ app = Flask(__name__)
 import sys
 import urllib.request
 import json
-import psycopg2
 
 
 app.secret_key = b'19960223'
 #check whether it is a valid user
 def valid_user(username,password):
     #connect to jana and check
-    try:
-        conn = psycopg2.connect(host="localhost",database="jana",user="ednein",port=4003)
-        print("connected successfully")
-    except:
-        print("not connected")
-    try:
-        cur = conn.cursor()
-        print("cursor made successfully")
-    except:
-        print("no cursor")
     myurl = "http://localhost:4003/query"
     req = urllib.request.Request(myurl)
     data = json.dumps({"query":"SELECT * FROM users", "username":"ednein"})
@@ -72,6 +61,7 @@ def logout():
 def GetData():
     columns = request.form.get("columns")
     table = request.form.get("table")
+    print(table)
     condition = request.form.get("condition")
     username = session['username']
     if condition:
