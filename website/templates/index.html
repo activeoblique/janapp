@@ -279,7 +279,7 @@
         }
 
         function SqlInvalid(oField) {
-            re = /select|id|and|or|insert|union|join|truncate|drop|update|delete|exec|sleep|--|'|"|&&|||;|%/i;
+            re = /select|id|and|or|insert|union|join|truncate|drop|update|delete|exec|sleep|--|'|"|&&|;|%/i;
             return re.test(oField.value);
         }
 </script>
