@@ -3,6 +3,7 @@ app = Flask(__name__)
 import sys
 import urllib.request
 import json
+import ast
 
 
 app.secret_key = b'19960223'
@@ -151,18 +152,12 @@ def GetData():
     data = data.encode('utf-8')
     req.add_header('Content-Length', len(data))
     response = urllib.request.urlopen(req, data)
-    result = response.read().decode('utf-8')
+    result = ast.literal_eval(response.read().decode('utf-8'))
     result = result.pop("durationMillis")
     result_json = json.loads(result)
     print(result_json)
     file = open('./your_hmp_result.txt', "w")
     file.write(result)
-    # result = result['rows']
-    # print(type(result))
-    # length = len(result[0])
-    # columns_name = [i for i in range(length)]
-    # test = pd.DataFrame(columns=columns_name, data=result)
-    # test.to_csv('./your_hmp_result.csv')
     return result
 
 def get_ratio(table,username):
