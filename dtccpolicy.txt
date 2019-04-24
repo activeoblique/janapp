@@ -4,27 +4,27 @@ DEFAULT DENY FOR POLICY;
 USER WITH username = 'ednein' IS SUPERUSER;
 USER WITH username = 'jana' IS SUPERUSER;
 
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ AGGREGATES OF accounts.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ AGGREGATES OF card.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ AGGREGATES OF client.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ AGGREGATES OF disp.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ AGGREGATES OF loan.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ AGGREGATES OF orders.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ AGGREGATES OF trans.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ AGGREGATES OF employees.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
 
 USER WITH username = 'jino'
   MAY READ AGGREGATES OF accounts.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
 USER WITH username = 'jino'
-  MAY READ AGGREGATES OF card.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
+  MAY READ AGGREGATES OF card.* USING DP_HISTOGRAM, DP_SUM, DPs_AVG, DP_COUNT;
 USER WITH username = 'jino'
   MAY READ AGGREGATES OF client.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
 USER WITH username = 'jino'
@@ -39,28 +39,28 @@ USER WITH username = 'jino'
   MAY READ AGGREGATES OF employees.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
 
 
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ DETAILS OF accounts.*
   WHERE bank_id = 1;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ DETAILS OF card.*
   WHERE bank_id = 1;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ DETAILS OF client.*
   WHERE bank_id = 1;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ DETAILS OF disp.*
   WHERE bank_id = 1;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ DETAILS OF loan.*
   WHERE bank_id = 1;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ DETAILS OF orders.*
   WHERE bank_id = 1;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ DETAILS OF trans.*
   WHERE bank_id = 1;
-USER WITH username = 'yang'
+USER WITH username = 'yangyang'
   MAY READ DETAILS OF employees.*
   WHERE bank_id = 1;
 
