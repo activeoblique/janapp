@@ -3,7 +3,7 @@ app = Flask(__name__)
 import sys
 import urllib.request
 import json
-import pandas as pd
+
 
 app.secret_key = b'19960223'
 #check whether it is a valid user
@@ -64,11 +64,87 @@ def GetData():
     table = request.form.get("table")
     condition = request.form.get("condition")
     username = session['username']
-    if condition:
-        condition = " where " + condition
-    query = "select "+ columns + " from " + table + condition
-    print(username)
-    print(query)
+
+    query = ""
+    if table == "accounts":
+        colnames = ["account_id", "district_id", "frequency", "date", "bank_id"]
+        if columns in colnames:
+            if condition:
+                condition = " where " + condition
+            print("???")
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "card":
+        colnames = ["card_id", "disp_id", "type", "issued", "bank_id"]
+        if columns in colnames:
+            if condition:
+                condition = " where " + condition
+            print("???")
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "client":
+        colnames = ["client_id", "birth_number", "district_id", "bank_id"]
+        if columns in colnames:
+            if condition:
+                condition = " where " + condition
+            print("???")
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "disp":
+        colnames = ["disp_id", "client_id", "account_id", "type", "bank_id"]
+        if columns in colnames:
+            if condition:
+                condition = " where " + condition
+            print("???")
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "employees":
+        colnames = ["name", "age", "department", "bank_id"]
+        if columns in colnames:
+            if condition:
+                condition = " where " + condition
+            print("???")
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "loan":
+        colnames = ["loan_id", "account_id", "date", "amount", "duration", "payments", "status", "bank_id"]
+        if columns in colnames:
+            if condition:
+                condition = " where " + condition
+            print("???")
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "orders":
+        colnames = ["order_id", "account_id", "bank_to", "account_to", "amount", "k_symbol", "bank_id"]
+        if columns in colnames:
+            if condition:
+                condition = " where " + condition
+            print("???")
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "trans":
+        colnames = ["trans_id", "account_id", "date", "type", "operation", "amount", "balance", "k_symbol", "bank", "account", "bank_id"]
+        if columns in colnames:
+            if condition:
+                condition = " where " + condition
+            print("???")
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+
+    # if condition:
+    #     condition = " where " + condition
+    # print("???")
+    # query = "select "+ columns + " from " + table + condition
+    # print(username)
+    # print(query)
     body = {
         "query": query,
         "username": username
@@ -119,7 +195,7 @@ def get_ratio(table,username):
     if overall == 0:
         return 0
     return yours / overall
-    
+
 @app.route("/basic_analysis",methods = ['POST'])
 def basci_analysis():
     print(session)
@@ -134,7 +210,7 @@ def basci_analysis():
             result += "Your portion in " + table + " is " + str(ratio) + "\n"
         return render_template('index.html', analysis = result)
     return "you are not login"
-    
+
 @app.route('/download', methods=['POST'])
 def download():
     # change filename for download
