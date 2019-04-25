@@ -1,4 +1,4 @@
-from flask import Flask, request, session, escape, redirect, url_for, send_file, send_from_directory, render_template, make_response
+from flask import Flask, request, session, escape, redirect, url_for, send_file, send_from_directory, render_template, make_response, abort
 app = Flask(__name__)
 import sys
 import urllib.request
@@ -30,7 +30,7 @@ def csrf_protect():
     if request.method == "POST":
         token = session.pop('_csrf_token', None)
         if not token or token != request.form.get('_csrf_token'):
-            sys.exit(0)
+            abort(400)
 
 def randomString(stringLength=30):
     """Generate a random string of fixed length """
