@@ -193,6 +193,21 @@ def GetData():
             result = {"error":"Invalid column name."}
             result_json = json.dumps(result)
             return result_json
+    elif table == "predictions":
+        colnames = ["*","amount", "account_id", "type", "bank_id"]
+        if bool([ele for ele in colnames if(ele in columns)]):
+            if condition:
+                condition = " where " + condition
+            if "count" in columns:
+                columns = columns.replace("count(","dp_count(0.1,")
+            if "count" in condition:
+                condition = condition.replace("count(","dp_count(0.1,")
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+            result = {"error":"Invalid column name."}
+            result_json = json.dumps(result)
+            return result_json
     else:
         result = {"error":"Invalid table name."}
         result_json = json.dumps(result)
