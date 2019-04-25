@@ -17,6 +17,8 @@ USER WITH username = 'yangyang'
   MAY READ AGGREGATES OF orders.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
 USER WITH username = 'yangyang'
   MAY READ AGGREGATES OF trans.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
+USER WITH username = 'yangyang'
+  MAY READ AGGREGATES OF predictions.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
 
 USER WITH username = 'jino'
   MAY READ AGGREGATES OF accounts.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
@@ -32,6 +34,8 @@ USER WITH username = 'jino'
   MAY READ AGGREGATES OF orders.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
 USER WITH username = 'jino'
   MAY READ AGGREGATES OF trans.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
+USER WITH username = 'yangyang'
+  MAY READ AGGREGATES OF predictions.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
 
 
 USER WITH username = 'yangyang'
@@ -55,40 +59,32 @@ USER WITH username = 'yangyang'
 USER WITH username = 'yangyang'
   MAY READ DETAILS OF trans.*
   WHERE bank_id = 1;
-
-
-
-USER WITH username = 'jino'
-  MAY READ DETAILS OF accounts.*
-  WHERE bank_id = 1;
-USER WITH username = 'jino'
-  MAY READ DETAILS OF card.*
-  WHERE bank_id = 1;
-USER WITH username = 'jino'
-  MAY READ DETAILS OF client.*
-  WHERE bank_id = 1;
-USER WITH username = 'jino'
-  MAY READ DETAILS OF disp.*
-  WHERE bank_id = 1;
-USER WITH username = 'jino'
-  MAY READ DETAILS OF loan.*
-  WHERE bank_id = 1;
-USER WITH username = 'jino'
-  MAY READ DETAILS OF orders.*
-  WHERE bank_id = 1;
-USER WITH username = 'jino'
-  MAY READ DETAILS OF trans.*
-  WHERE bank_id = 1;
-
-USER WITH username = 'jino'
-  MAY READ DETAILS OF employees.*
-  WHERE bank_id = 1;
-
-USER WITH username = 'jino'
-  MAY READ DETAILS OF predictions.*
-  WHERE bank_id = 1;
-
 USER WITH username = 'yangyang'
   MAY READ DETAILS OF predictions.*
   WHERE bank_id = 1;
 
+
+USER WITH username = 'jino'
+  MAY READ DETAILS OF accounts.*
+  WHERE bank_id = 2;
+USER WITH username = 'jino'
+  MAY READ DETAILS OF card.*
+  WHERE bank_id = 2;
+USER WITH username = 'jino'
+  MAY READ DETAILS OF client.*
+  WHERE bank_id = 2;
+USER WITH username = 'jino'
+  MAY READ DETAILS OF disp.*
+  WHERE bank_id = 2;
+USER WITH username = 'jino'
+  MAY READ DETAILS OF loan.*
+  WHERE bank_id = 2;
+USER WITH username = 'jino'
+  MAY READ DETAILS OF orders.*
+  WHERE bank_id = 2;
+USER WITH username = 'jino'
+  MAY READ DETAILS OF trans.*
+  WHERE bank_id = 2;
+USER WITH username = 'jino'
+  MAY READ DETAILS OF predictions.*
+  WHERE bank_id = 2;
