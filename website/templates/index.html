@@ -312,7 +312,7 @@
                 data: $('#qform').serialize(),
                 success: function (data) {
                     // $('#result').html(data);
-                    console.log(data);
+                    data = data.replace(/'/g, '"');
                     data = JSON.parse(data);
                     console.log("AJAXXXXXX");
                     console.log(typeof(data));
