@@ -1,9 +1,11 @@
-from flask import Flask, request, session, escape, redirect, url_for, send_file, send_from_directory, render_template, make_response
+from flask import Flask, request, session, escape, redirect, url_for, send_file, send_from_directory, render_template, make_response, abort
 app = Flask(__name__)
 import sys
 import urllib.request
 import json
 import ast
+import random
+import string
 
 
 app.secret_key = b'19960223'
@@ -30,9 +32,14 @@ def csrf_protect():
         if not token or token != request.form.get('_csrf_token'):
             abort(400)
 
+def randomString(stringLength=30):
+    """Generate a random string of fixed length """
+    letters = string.ascii_lowercase
+    return ''.join(random.choice(letters) for i in range(stringLength))
+
 def generate_csrf_token():
     if '_csrf_token' not in session:
-        session['_csrf_token'] = some_random_string()
+        session['_csrf_token'] = randomString()
     return session['_csrf_token']
 
 app.jinja_env.globals['csrf_token'] = generate_csrf_token
