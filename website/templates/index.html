@@ -314,7 +314,7 @@
                     // $('#result').html(data);
                     console.log(data);
                     console.log(typeof(data));
-                    CreateTable(JSON.parse(data));
+                    CreateTable(data);
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log('xHR: ' + xhr);
@@ -331,7 +331,8 @@
             return re.test(oField.value);
         }
 
-        function CreateTable(ojson) {
+        function CreateTable(ojson)
+            ojson = JSON.parse(ojson);
             var col = [];
             for (var i = 0; i < ojson.columnLabels.length; i++) {
               col.push(ojson.columnLabels[i]);
