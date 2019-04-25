@@ -331,7 +331,7 @@
             return re.test(oField.value);
         }
 
-        function CreateTable(ojson)
+        function CreateTable(ojson) {
             ojson = JSON.parse(ojson);
             var col = [];
             for (var i = 0; i < ojson.columnLabels.length; i++) {
