@@ -228,8 +228,19 @@
 </nav>
 
 <div id = "cols">
-    Welcome! These are the tables and columns that you can query: <br/>
-    
+    Welcome! There are three main functions of this system: <br/>
+    1. Query <br/>
+    2. Aggregated Analysis<br/>
+    3. Prediction on your clients' transaction behavior <br/>
+    <br/>
+    These are the tables and columns that you can query: <br/>
+    <b>accounts</b>: account_id, district_id, frequency, date, bank_id <br/>
+    <b>card</b>: card_id, disp_id, type, issued, bank_id <br/>
+    <b>client</b>: client_id, birth_number, district_id, bank_id <br/>
+    <b>disp</b>: disp_id, client_id, account_id, type, bank_id <br/>
+    <b>loan</b>: loan_id, account_id, date, amount, duration, payments, status, bank_id <br/>
+    <b>orders</b>: order_id, account_id, bank_to, account_to, amount, k_symbol, bank_id <br/>
+    <b>trans</b>: trans_id, account_id, date, type, operation, amount, balance, k_symbol, bank, account, bank_id <br/>
 </div>
 
 <a name="qform">
@@ -321,8 +332,6 @@
                     }
                 }
             }
-            console.log(json)
-            console.log(typeof(json))
             console.log('1 checkpoint');
             var table = document.createElement("table");
 
