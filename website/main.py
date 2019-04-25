@@ -23,6 +23,20 @@ def valid_user(username,password):
             return True
     return False
 
+@app.before_request
+def csrf_protect():
+    if request.method == "POST":
+        token = session.pop('_csrf_token', None)
+        if not token or token != request.form.get('_csrf_token'):
+            abort(400)
+
+def generate_csrf_token():
+    if '_csrf_token' not in session:
+        session['_csrf_token'] = some_random_string()
+    return session['_csrf_token']
+
+app.jinja_env.globals['csrf_token'] = generate_csrf_token
+
 @app.route("/", methods=['GET','POST'])
 def index():
     if 'username' in session:
@@ -73,6 +87,10 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
+            if "count" in columns or "count" in condition:
+                columns = columns.replace("count(","dp_count(0.1,")
+            if "count" in condition:
+                condition = condition.replace("count(","dp_count(0.1,")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
@@ -84,6 +102,10 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
+            if "count" in columns:
+                columns = columns.replace("count(","dp_count(0.1,")
+            if "count" in condition:
+                condition = condition.replace("count(","dp_count(0.1,")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
@@ -95,6 +117,10 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
+            if "count" in columns:
+                columns = columns.replace("count(","dp_count(0.1,")
+            if "count" in condition:
+                condition = condition.replace("count(","dp_count(0.1,")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
@@ -106,6 +132,10 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
+            if "count" in columns:
+                columns = columns.replace("count(","dp_count(0.1,")
+            if "count" in condition:
+                condition = condition.replace("count(","dp_count(0.1,")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
@@ -117,6 +147,10 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
+            if "count" in columns:
+                columns = columns.replace("count(","dp_count(0.1,")
+            if "count" in condition:
+                condition = condition.replace("count(","dp_count(0.1,")
             query = "select "+ columns + " from " + table + condition
         else:
             result = {"error":"Invalid column name."}
@@ -127,6 +161,10 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
+            if "count" in columns:
+                columns = columns.replace("count(","dp_count(0.1,")
+            if "count" in condition:
+                condition = condition.replace("count(","dp_count(0.1,")
             query = "select "+ columns + " from " + table + condition
         else:
             result = {"error":"Invalid column name."}
@@ -137,18 +175,26 @@ def GetData():
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
+            if "count" in columns:
+                columns = columns.replace("count(","dp_count(0.1,")
+            if "count" in condition:
+                condition = condition.replace("count(","dp_count(0.1,")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
             result = {"error":"Invalid column name."}
             result_json = json.dumps(result)
             return result_json
-            
+
     elif table == "trans":
         colnames = ["*","trans_id", "account_id", "date", "type", "operation", "amount", "balance", "k_symbol", "bank", "account", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
+            if "count" in columns:
+                columns = columns.replace("count(","dp_count(0.1,")
+            if "count" in condition:
+                condition = condition.replace("count(","dp_count(0.1,")
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
@@ -265,5 +311,6 @@ def personal_analysis():
             msg = 'The next transaction amount will be'  + result['rows'][0][5] +", then next transaction type will be" + result['rows'][0][3] +' .'
             return msg
     return "you are not login"
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
