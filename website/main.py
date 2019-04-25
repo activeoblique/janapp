@@ -6,7 +6,7 @@ import json
 import ast
 import random
 import string
-from flask_wtf.csrf import CSRFProtect
+from flask_wtf.csrf import CSRFProtect, CSRFError
 
 
 app.secret_key = b'19960223'
