@@ -322,11 +322,13 @@
         }
 
         function CreateTable(ojson) {
+            console.log(osjon);
+            
             var json = [];
             json.push(ojson);
 
             console.log(json);
-            
+
             var col = [];
             for(var i = 0; i < json.length; i++) {
                 for(var key in json[i]) {
