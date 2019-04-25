@@ -1,26 +1,73 @@
 {
+    "primaryKey": [
+        "account_id"
+    ],
     "name": "predictions",
     "attributes": [
         {
-            "name": "account_id",
-            "privacyLevel": {
-                "type": "public"
-            },
-            "type": "SQLUnsignedInt32"
-        },
-        {
+            "constraints": [],
             "name": "amount",
             "privacyLevel": {
-                "type": "public"
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
             },
             "type": "SQLUnsignedInt32"
         },
         {
+            "constraints": [],
+            "name": "account_id",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": true,
+                        "foreignKey": {
+                            "attribute": "account_id",
+                            "relation": "accounts"
+                        }
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "constraints": [
+	      {
+		"value":20,
+		"type":"padTo"
+	      }
+	    ],
             "name": "type",
             "privacyLevel": {
-                "type": "public"
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
             },
             "type": "SQLString"
+        },
+        {
+            "constraints": [],
+            "name": "bank_id",
+            "privacyLevel": {
+                "type": "private",
+                "operations": [
+                    {
+                        "type": "EqualityComparison",
+                        "index": true
+                    }
+                ]
+            },
+            "type": "SQLUnsignedInt32"
         }
     ]
 }
