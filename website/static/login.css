@@ -1,6 +1,5 @@
 *{padding: 0;margin: 0;}
 
-/* 清除浮动 */
 .clearfix:after {content: "";display: table;clear: both;}
 html, body { height: 100%; }
 body {
@@ -11,10 +10,8 @@ body {
 a {text-decoration: none; color:#000;}
 a:hover{color:#F87982;}
 
-/*home*/
 #home{padding-top:100px;}
 
-/*logint界面*/
 #login{
     padding:20px 30px 30px; width:300px; background:#FFF; margin:auto;
     border-radius: 3px;
@@ -22,19 +19,15 @@ a:hover{color:#F87982;}
 }
 
 .current1{
-    -moz-transform: scale(0);     /* for Firefox 缩放比例 */
-    -webkit-transform: scale(0);  /* for Chrome || Safari 缩放比例 */
-    -o-transform: scale(0);       /* for Opera            缩放比例 */
-    -ms-transform: scale(0);      /* for IE 缩放比例 */
+    -moz-transform: scale(0);
+    -webkit-transform: scale(0);
+    -o-transform: scale(0);
+    -ms-transform: scale(0);
     transform: scale(0);
     -moz-transition: all 0.4s ease-in-out;
     -webkit-transition: all 0.4s ease-in-out;
     -o-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
-    /*
-    * CSS的transition允许CSS的属性值在一定的时间区间内平滑地过渡。
-    * 这种效果可以在鼠标单击、获得焦点、被点击或对元素任何改变中触发，并圆滑地以动画效果改变CSS的属性值
-    */
 }
 
 .current{
