@@ -79,7 +79,7 @@ USER WITH username = 'jino'
 USER WITH username = 'jino'
   MAY READ DETAILS OF trans.*
   WHERE bank_id = 1;
-<<<<<<< HEAD
+
 USER WITH username = 'jino'
   MAY READ DETAILS OF employees.*
   WHERE bank_id = 1;
@@ -91,5 +91,4 @@ USER WITH username = 'jino'
 USER WITH username = 'yangyang'
   MAY READ DETAILS OF predictions.*
   WHERE bank_id = 1;
-=======
->>>>>>> 34fe6e5c2e8feb94ee6780aa8c50b24c9a8bbda0
+
