@@ -333,6 +333,8 @@
 
         function CreateTable(ojson) {
             ojson = JSON.parse(ojson);
+
+            console.log(typeof(ojson));
             var col = [];
             for (var i = 0; i < ojson.columnLabels.length; i++) {
               col.push(ojson.columnLabels[i]);
