@@ -95,6 +95,22 @@
             text-shadow: 1px 1px 1px #FFF;
             border:1px solid #E4E4E4;
         }
+
+        #cols {
+            width: 70%;
+            height: 70%;
+            margin-top: 10%;
+            margin-left:auto;
+            margin-right:auto;
+            background: #F7F7F7;
+            padding: 25px 15px 25px 10px;
+            font: 20px Helvetica Neue, Helvetica, Arial, sans-serif;
+            color: #888;
+            text-shadow: 1px 1px 1px #FFF;
+            border:1px solid #E4E4E4;
+            z-index:-11;
+        }
+
         #qform {
             width: 70%;
             height: 70%;
@@ -211,6 +227,22 @@
   </li>
 </ul>
 </nav>
+
+<div id = "cols">
+    Welcome! There are three main functions of this system: <br/>
+    1. Query <br/>
+    2. Aggregated Analysis<br/>
+    3. Prediction on your clients' transaction behavior <br/>
+    <br/>
+    These are the tables and columns that you can query: <br/>
+    <b>accounts</b>: account_id, district_id, frequency, date, bank_id <br/>
+    <b>card</b>: card_id, disp_id, type, issued, bank_id <br/>
+    <b>client</b>: client_id, birth_number, district_id, bank_id <br/>
+    <b>disp</b>: disp_id, client_id, account_id, type, bank_id <br/>
+    <b>loan</b>: loan_id, account_id, date, amount, duration, payments, status, bank_id <br/>
+    <b>orders</b>: order_id, account_id, bank_to, account_to, amount, k_symbol, bank_id <br/>
+    <b>trans</b>: trans_id, account_id, date, type, operation, amount, balance, k_symbol, bank, account, bank_id <br/>
+</div>
 
 <a name="qform">
 <form id="qform" method="post" >
