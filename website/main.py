@@ -76,6 +76,9 @@ def GetData():
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
+            result = {"error":"Invalid column name."}
+            result_json = json.dumps(result)
+            return result_json
     elif table == "card":
         colnames = ["card_id", "disp_id", "type", "issued", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
@@ -84,6 +87,9 @@ def GetData():
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
+            result = {"error":"Invalid column name."}
+            result_json = json.dumps(result)
+            return result_json
     elif table == "client":
         colnames = ["client_id", "birth_number", "district_id", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
@@ -92,6 +98,9 @@ def GetData():
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
+            result = {"error":"Invalid column name."}
+            result_json = json.dumps(result)
+            return result_json
     elif table == "disp":
         colnames = ["disp_id", "client_id", "account_id", "type", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
@@ -100,6 +109,9 @@ def GetData():
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
+            result = {"error":"Invalid column name."}
+            result_json = json.dumps(result)
+            return result_json
     elif table == "employees":
         colnames = ["name", "age", "department", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
@@ -107,7 +119,9 @@ def GetData():
                 condition = " where " + condition
             query = "select "+ columns + " from " + table + condition
         else:
-            print("no such column")
+            result = {"error":"Invalid column name."}
+            result_json = json.dumps(result)
+            return result_json
     elif table == "loan":
         colnames = ["loan_id", "account_id", "date", "amount", "duration", "payments", "status", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
@@ -115,7 +129,9 @@ def GetData():
                 condition = " where " + condition
             query = "select "+ columns + " from " + table + condition
         else:
-            print("no such column")
+            result = {"error":"Invalid column name."}
+            result_json = json.dumps(result)
+            return result_json
     elif table == "orders":
         colnames = ["order_id", "account_id", "bank_to", "account_to", "amount", "k_symbol", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
@@ -124,6 +140,10 @@ def GetData():
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
+            result = {"error":"Invalid column name."}
+            result_json = json.dumps(result)
+            return result_json
+            
     elif table == "trans":
         colnames = ["trans_id", "account_id", "date", "type", "operation", "amount", "balance", "k_symbol", "bank", "account", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
@@ -132,13 +152,14 @@ def GetData():
             query = "select "+ columns + " from " + table + condition
         else:
             print("no such column")
+            result = {"error":"Invalid column name."}
+            result_json = json.dumps(result)
+            return result_json
+    else:
+        result = {"error":"Invalid table name."}
+        result_json = json.dumps(result)
+        return result_json
 
-    # if condition:
-    #     condition = " where " + condition
-    # print("???")
-    # query = "select "+ columns + " from " + table + condition
-    print(username)
-    print(query)
     body = {
         "query": query,
         "username": username
@@ -200,7 +221,7 @@ def basci_analysis():
         for table in tables:
             ratio = get_ratio(table,username)
             result += "Your portion in " + table + " is " + str(ratio) + "\n"
-        return render_template('index.html', analysis = result)
+        return render_template('index.html', analysis = result, username = session['username'])
     return "you are not login"
 
 @app.route('/download', methods=['POST'])

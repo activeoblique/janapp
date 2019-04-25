@@ -309,7 +309,7 @@
                     console.log('xHR: ' + xhr);
                     console.log('ajaxOption: ' + ajaxOptions);
                     console.log('thrownError: ' + thrownError);
-                },
+                }
 
             })
                 // .done(CreateTable(data))
@@ -332,7 +332,6 @@
                     }
                 }
             }
-            console.log('1 checkpoint');
             var table = document.createElement("table");
 
             var tr = table.insertRow(-1);
@@ -342,7 +341,6 @@
                 th.innerHTML = col[i];
                 tr.appendChild(th);
             }
-            console.log('2 checkpoint');
             for(var i = 0; i < json.length; i++) {
                 tr = table.insertRow(-1);
 
@@ -352,7 +350,6 @@
                 }
 
             }
-            console.log('3 checkpoint');
             var divContainer = document.getElementById("result");
             divContainer.innerHTML = "";
             divContainer.appendChild(table);
