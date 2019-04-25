@@ -6,6 +6,8 @@ import json
 import ast
 import random
 import string
+from flask_wtf.csrf import CSRFProtect, CSRFError
+csrf = CSRFProtect(app)
 
 
 app.secret_key = b'19960223'
@@ -25,24 +27,27 @@ def valid_user(username,password):
             return True
     return False
 
-@app.before_request
-def csrf_protect():
-    if request.method == "POST":
-        token = session.pop('_csrf_token', None)
-        if not token or token != request.form.get('_csrf_token'):
-            abort(400)
-
-def randomString(stringLength=30):
-    """Generate a random string of fixed length """
-    letters = string.ascii_lowercase
-    return ''.join(random.choice(letters) for i in range(stringLength))
-
-def generate_csrf_token():
-    if '_csrf_token' not in session:
-        session['_csrf_token'] = randomString()
-    return session['_csrf_token']
-
-app.jinja_env.globals['csrf_token'] = generate_csrf_token
+@app.errorhandler(CSRFError)
+def handle_csrf_error(e):
+    return render_template('csrf_error.html', reason=e.description), 400
+# @app.before_request
+# def csrf_protect():
+#     if request.method == "POST":
+#         token = session.pop('_csrf_token', None)
+#         if not token or token != request.form.get('_csrf_token'):
+#             abort(400)
+#
+# def randomString(stringLength=30):
+#     """Generate a random string of fixed length """
+#     letters = string.ascii_lowercase
+#     return ''.join(random.choice(letters) for i in range(stringLength))
+#
+# def generate_csrf_token():
+#     if '_csrf_token' not in session:
+#         session['_csrf_token'] = randomString()
+#     return session['_csrf_token']
+#
+# app.jinja_env.globals['csrf_token'] = generate_csrf_token
 
 @app.route("/", methods=['GET','POST'])
 def index():
@@ -317,6 +322,7 @@ def personal_analysis():
             msg = 'The next transaction amount will be'  + result['rows'][0][1] +", then next transaction type will be" + result['rows'][0][2] +' .'
             return msg
     return "you are not login"
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

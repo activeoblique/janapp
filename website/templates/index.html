@@ -246,7 +246,8 @@
 
 <a name="qform">
 <form id="qform" method="post" >
-    <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <!-- <input name=_csrf_token type=hidden value="{{ csrf_token() }}"> -->
     Enter your query here: <br>
     <br>
     SELECT<br> <input align="center" type="text" name="columns" id = "columns" placeholder="column names" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif"><br>
@@ -265,7 +266,8 @@
             text-shadow: 1px 1px 1px #9E3F3F;
             cursor: pointer;">Export Result</button>
     </form>
-    <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <!-- <input name=_csrf_token type=hidden value="{{ csrf_token() }}"> -->
 </a>
 <br>
 <a name="analysis">
@@ -278,7 +280,8 @@
             cursor: pointer;">Get Aggregated Analysis</button>
         <p>{{analysis}}</p>
     </form>
-    <input name=_csrf_token type=hidden value="{{ csrf_token() }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+    <!-- <input name=_csrf_token type=hidden value="{{ csrf_token() }}"> -->
 </a>
 <a name="prediction">
     <form action="/personal_analysis" method="get" style="height: 40%; width: 70%;background: #F7F7F7;
@@ -290,7 +293,16 @@
             cursor: pointer;">Predict an account next transaction</button>
     </form>
 </a>
-<script>
+<script type="text/javascript">
+
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrf_token);
+                }
+            }
+        });
+
         function query() {
             // Check for SQL injection attack
             var field1 = document.getElementById("columns");
