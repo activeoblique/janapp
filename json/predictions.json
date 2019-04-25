@@ -1,0 +1,26 @@
+{
+    "name": "predictions",
+    "attributes": [
+        {
+            "name": "account_id",
+            "privacyLevel": {
+                "type": "public"
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "name": "amount",
+            "privacyLevel": {
+                "type": "public"
+            },
+            "type": "SQLUnsignedInt32"
+        },
+        {
+            "name": "type",
+            "privacyLevel": {
+                "type": "public"
+            },
+            "type": "SQLString"
+        }
+    ]
+}
