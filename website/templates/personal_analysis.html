@@ -217,6 +217,7 @@
 </form>
 <br>
     <form action="/" method="GET" style="height: auto; width: 70%;background: #F7F7F7; ">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <button style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
             text-shadow: 1px 1px 1px #9E3F3F;
             cursor: pointer;">back to query</button>

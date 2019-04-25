@@ -246,6 +246,7 @@
 
 <a name="qform">
 <form id="qform" method="post" >
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
     Enter your query here: <br>
     <br>
     SELECT<br> <input align="center" type="text" name="columns" id = "columns" placeholder="column names" style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif"><br>
@@ -260,6 +261,7 @@
     <form id="cnm" action="/download" method="POST" style = "z-index:11; width: 70%; margin-top: 100;
             margin-left:auto;
             margin-right:auto;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         Your query result is: <p id = "result" style="background-color: #fff"></p>
         <br><br>
         <button name="downloadBtn" id="exportbutton" style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
@@ -273,6 +275,7 @@
             margin-top: 3%;
             margin-left:auto;
             margin-right:auto;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <button style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
             text-shadow: 1px 1px 1px #9E3F3F;
             cursor: pointer;">Get Aggregated Analysis</button>
@@ -284,6 +287,7 @@
           margin-top: 3%;
           margin-left:auto;
           margin-right:auto;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <button style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
             text-shadow: 1px 1px 1px #9E3F3F;
             cursor: pointer;">Predict an account next transaction</button>
