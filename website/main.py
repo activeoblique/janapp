@@ -3,6 +3,7 @@ app = Flask(__name__)
 import sys
 import urllib.request
 import json
+import ast
 
 
 app.secret_key = b'19960223'
@@ -11,7 +12,7 @@ def valid_user(username,password):
     #connect to jana and check
     myurl = "http://localhost:4003/query"
     req = urllib.request.Request(myurl)
-    data = json.dumps({"query":"SELECT * FROM users", "username":"ednein"})
+    data = json.dumps({"query":"SELECT * FROM users", "username":"jana"})
     print(data)
     req.add_header('Content-Type', 'application/json; charset=utf-8')
     data = data.encode('utf8')
@@ -65,85 +66,77 @@ def GetData():
     condition = str(request.form.get("condition"))
     username = session['username']
 
-    # query = ""
-    # check = []
-    # if table == "accounts":
-    #     colnames = ["account_id", "district_id", "frequency", "date", "bank_id"]
-    #     if columns in colnames:
-    #         if condition:
-    #             condition = " where " + condition
-    #         print("???")
-    #         query = "select "+ columns + " from " + table + condition
-    #     else:
-    #         print("no such column")
-    # elif table == "card":
-    #     colnames = ["card_id", "disp_id", "type", "issued", "bank_id"]
-    #     if columns in colnames:
-    #         if condition:
-    #             condition = " where " + condition
-    #         print("???")
-    #         query = "select "+ columns + " from " + table + condition
-    #     else:
-    #         print("no such column")
-    # elif table == "client":
-    #     colnames = ["client_id", "birth_number", "district_id", "bank_id"]
-    #     if columns in colnames:
-    #         if condition:
-    #             condition = " where " + condition
-    #         print("???")
-    #         query = "select "+ columns + " from " + table + condition
-    #     else:
-    #         print("no such column")
-    # elif table == "disp":
-    #     colnames = ["disp_id", "client_id", "account_id", "type", "bank_id"]
-    #     if columns in colnames:
-    #         if condition:
-    #             condition = " where " + condition
-    #         print("???")
-    #         query = "select "+ columns + " from " + table + condition
-    #     else:
-    #         print("no such column")
-    # elif table == "employees":
-    #     colnames = ["name", "age", "department", "bank_id"]
-    #     if columns in colnames:
-    #         if condition:
-    #             condition = " where " + condition
-    #         print("???")
-    #         query = "select "+ columns + " from " + table + condition
-    #     else:
-    #         print("no such column")
-    # elif table == "loan":
-    #     colnames = ["loan_id", "account_id", "date", "amount", "duration", "payments", "status", "bank_id"]
-    #     if columns in colnames:
-    #         if condition:
-    #             condition = " where " + condition
-    #         print("???")
-    #         query = "select "+ columns + " from " + table + condition
-    #     else:
-    #         print("no such column")
-    # elif table == "orders":
-    #     colnames = ["order_id", "account_id", "bank_to", "account_to", "amount", "k_symbol", "bank_id"]
-    #     if columns in colnames:
-    #         if condition:
-    #             condition = " where " + condition
-    #         print("???")
-    #         query = "select "+ columns + " from " + table + condition
-    #     else:
-    #         print("no such column")
-    # elif table == "trans":
-    #     colnames = ["trans_id", "account_id", "date", "type", "operation", "amount", "balance", "k_symbol", "bank", "account", "bank_id"]
-    #     if columns in colnames:
-    #         if condition:
-    #             condition = " where " + condition
-    #         print("???")
-    #         query = "select "+ columns + " from " + table + condition
-    #     else:
-    #         print("no such column")
+    query = ""
+    check = []
+    if table == "accounts":
+        colnames = ["account_id", "district_id", "frequency", "date", "bank_id"]
+        if bool([ele for ele in colnames if(ele in columns)]):
+            if condition:
+                condition = " where " + condition
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "card":
+        colnames = ["card_id", "disp_id", "type", "issued", "bank_id"]
+        if bool([ele for ele in colnames if(ele in columns)]):
+            if condition:
+                condition = " where " + condition
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "client":
+        colnames = ["client_id", "birth_number", "district_id", "bank_id"]
+        if bool([ele for ele in colnames if(ele in columns)]):
+            if condition:
+                condition = " where " + condition
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "disp":
+        colnames = ["disp_id", "client_id", "account_id", "type", "bank_id"]
+        if bool([ele for ele in colnames if(ele in columns)]):
+            if condition:
+                condition = " where " + condition
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "employees":
+        colnames = ["name", "age", "department", "bank_id"]
+        if bool([ele for ele in colnames if(ele in columns)]):
+            if condition:
+                condition = " where " + condition
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "loan":
+        colnames = ["loan_id", "account_id", "date", "amount", "duration", "payments", "status", "bank_id"]
+        if bool([ele for ele in colnames if(ele in columns)]):
+            if condition:
+                condition = " where " + condition
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "orders":
+        colnames = ["order_id", "account_id", "bank_to", "account_to", "amount", "k_symbol", "bank_id"]
+        if bool([ele for ele in colnames if(ele in columns)]):
+            if condition:
+                condition = " where " + condition
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
+    elif table == "trans":
+        colnames = ["trans_id", "account_id", "date", "type", "operation", "amount", "balance", "k_symbol", "bank", "account", "bank_id"]
+        if bool([ele for ele in colnames if(ele in columns)]):
+            if condition:
+                condition = " where " + condition
+            query = "select "+ columns + " from " + table + condition
+        else:
+            print("no such column")
 
-    if condition:
-        condition = " where " + condition
-    print("???")
-    query = "select "+ columns + " from " + table + condition
+    # if condition:
+    #     condition = " where " + condition
+    # print("???")
+    # query = "select "+ columns + " from " + table + condition
     print(username)
     print(query)
     body = {
@@ -159,16 +152,14 @@ def GetData():
     data = data.encode('utf-8')
     req.add_header('Content-Length', len(data))
     response = urllib.request.urlopen(req, data)
-    result = response.read().decode('utf-8')
+    result = ast.literal_eval(response.read().decode('utf-8'))
+    result.pop("durationMillis")
+    result = str(result)
+    result_json = json.dumps(result)
+    print(result_json)
     file = open('./your_hmp_result.txt', "w")
     file.write(result)
-    # result = result['rows']
-    # print(type(result))
-    # length = len(result[0])
-    # columns_name = [i for i in range(length)]
-    # test = pd.DataFrame(columns=columns_name, data=result)
-    # test.to_csv('./your_hmp_result.csv')
-    return result
+    return result_json
 
 def get_ratio(table,username):
     query = "select count(*) from " + table
@@ -184,7 +175,7 @@ def get_ratio(table,username):
     except:
         yours = 0
     # query whole database using DP_COUNT
-    data = json.dumps({"query": "SELECT DP_COUNT(0.1, *) FROM " + table, "username": "ednein"})
+    data = json.dumps({"query": "SELECT DP_COUNT(0.1, *) FROM " + table, "username": "jana"})
     print(data)
     print(yours)
     req.add_header('Content-Type', 'application/json; charset=utf-8')
