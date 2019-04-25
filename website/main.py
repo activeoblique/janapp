@@ -23,6 +23,20 @@ def valid_user(username,password):
             return True
     return False
 
+@app.before_request
+def csrf_protect():
+    if request.method == "POST":
+        token = session.pop('_csrf_token', None)
+        if not token or token != request.form.get('_csrf_token'):
+            abort(400)
+
+def generate_csrf_token():
+    if '_csrf_token' not in session:
+        session['_csrf_token'] = some_random_string()
+    return session['_csrf_token']
+
+app.jinja_env.globals['csrf_token'] = generate_csrf_token
+
 @app.route("/", methods=['GET','POST'])
 def index():
     if 'username' in session:
@@ -297,5 +311,6 @@ def personal_analysis():
             msg = 'The next transaction amount will be'  + result['rows'][0][5] +", then next transaction type will be" + result['rows'][0][3] +' .'
             return msg
     return "you are not login"
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
