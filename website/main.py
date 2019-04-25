@@ -69,7 +69,7 @@ def GetData():
     query = ""
     check = []
     if table == "accounts":
-        colnames = ["account_id", "district_id", "frequency", "date", "bank_id"]
+        colnames = ["*","account_id", "district_id", "frequency", "date", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
@@ -80,7 +80,7 @@ def GetData():
             result_json = json.dumps(result)
             return result_json
     elif table == "card":
-        colnames = ["card_id", "disp_id", "type", "issued", "bank_id"]
+        colnames = ["*","card_id", "disp_id", "type", "issued", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
@@ -91,7 +91,7 @@ def GetData():
             result_json = json.dumps(result)
             return result_json
     elif table == "client":
-        colnames = ["client_id", "birth_number", "district_id", "bank_id"]
+        colnames = ["*","client_id", "birth_number", "district_id", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
@@ -102,7 +102,7 @@ def GetData():
             result_json = json.dumps(result)
             return result_json
     elif table == "disp":
-        colnames = ["disp_id", "client_id", "account_id", "type", "bank_id"]
+        colnames = ["*","disp_id", "client_id", "account_id", "type", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
@@ -113,7 +113,7 @@ def GetData():
             result_json = json.dumps(result)
             return result_json
     elif table == "employees":
-        colnames = ["name", "age", "department", "bank_id"]
+        colnames = ["*","name", "age", "department", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
@@ -123,7 +123,7 @@ def GetData():
             result_json = json.dumps(result)
             return result_json
     elif table == "loan":
-        colnames = ["loan_id", "account_id", "date", "amount", "duration", "payments", "status", "bank_id"]
+        colnames = ["*","loan_id", "account_id", "date", "amount", "duration", "payments", "status", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
@@ -133,7 +133,7 @@ def GetData():
             result_json = json.dumps(result)
             return result_json
     elif table == "orders":
-        colnames = ["order_id", "account_id", "bank_to", "account_to", "amount", "k_symbol", "bank_id"]
+        colnames = ["*","order_id", "account_id", "bank_to", "account_to", "amount", "k_symbol", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
@@ -145,7 +145,7 @@ def GetData():
             return result_json
             
     elif table == "trans":
-        colnames = ["trans_id", "account_id", "date", "type", "operation", "amount", "balance", "k_symbol", "bank", "account", "bank_id"]
+        colnames = ["*","trans_id", "account_id", "date", "type", "operation", "amount", "balance", "k_symbol", "bank", "account", "bank_id"]
         if bool([ele for ele in colnames if(ele in columns)]):
             if condition:
                 condition = " where " + condition
