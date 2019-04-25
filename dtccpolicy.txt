@@ -1,7 +1,6 @@
 DEFAULT DENY FOR DATA;
 DEFAULT DENY FOR POLICY;
 
-USER WITH username = 'ednein' IS SUPERUSER;
 USER WITH username = 'jana' IS SUPERUSER;
 
 USER WITH username = 'yangyang'
@@ -18,8 +17,6 @@ USER WITH username = 'yangyang'
   MAY READ AGGREGATES OF orders.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
 USER WITH username = 'yangyang'
   MAY READ AGGREGATES OF trans.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
-USER WITH username = 'yangyang'
-  MAY READ AGGREGATES OF employees.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
 
 USER WITH username = 'jino'
   MAY READ AGGREGATES OF accounts.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
@@ -35,8 +32,6 @@ USER WITH username = 'jino'
   MAY READ AGGREGATES OF orders.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
 USER WITH username = 'jino'
   MAY READ AGGREGATES OF trans.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
-USER WITH username = 'jino'
-  MAY READ AGGREGATES OF employees.* USING DP_HISTOGRAM, DP_SUM, DP_AVG, DP_COUNT;
 
 
 USER WITH username = 'yangyang'
@@ -60,9 +55,7 @@ USER WITH username = 'yangyang'
 USER WITH username = 'yangyang'
   MAY READ DETAILS OF trans.*
   WHERE bank_id = 1;
-USER WITH username = 'yangyang'
-  MAY READ DETAILS OF employees.*
-  WHERE bank_id = 1;
+
 
 
 USER WITH username = 'jino'
@@ -85,7 +78,4 @@ USER WITH username = 'jino'
   WHERE bank_id = 1;
 USER WITH username = 'jino'
   MAY READ DETAILS OF trans.*
-  WHERE bank_id = 1;
-USER WITH username = 'jino'
-  MAY READ DETAILS OF employees.*
   WHERE bank_id = 1;
