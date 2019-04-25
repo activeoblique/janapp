@@ -7,6 +7,7 @@ import ast
 import random
 import string
 from flask_wtf.csrf import CSRFProtect, CSRFError
+csrf = CSRFProtect(app)
 
 
 app.secret_key = b'19960223'
@@ -325,5 +326,3 @@ def personal_analysis():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-    csrf = CSRFProtect()
-    csrf.init_app(app)
