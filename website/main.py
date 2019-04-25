@@ -8,7 +8,6 @@ import random
 import string
 from flask_wtf.csrf import CSRFProtect, CSRFError
 csrf = CSRFProtect(app)
-app.config['SERVER_NAME'] = 'localhost:5000'
 
 
 app.secret_key = b'19960223'
