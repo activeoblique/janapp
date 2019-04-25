@@ -313,7 +313,7 @@
                 success: function (data) {
                     // $('#result').html(data);
                     console.log(data);
-                    CreateTable(data);
+                    CreateTable(JSON.parse(data));
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log('xHR: ' + xhr);
