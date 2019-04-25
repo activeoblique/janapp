@@ -313,6 +313,7 @@
                 success: function (data) {
                     // $('#result').html(data);
                     console.log(data);
+                    data = JSON.parse(ojson);
                     console.log("AJAXXXXXX");
                     console.log(typeof(data));
                     CreateTable(data);
@@ -333,10 +334,10 @@
         }
 
         function CreateTable(ojson) {
-            ojson = JSON.parse(ojson);
             // ojson = JSON.parse(ojson);
-            console.log("IN FUNCTION");
-            console.log(typeof(ojson));
+            // // ojson = JSON.parse(ojson);
+            // console.log("IN FUNCTION");
+            // console.log(typeof(ojson));
             var col = [];
             for (var i = 0; i < ojson.columnLabels.length; i++) {
               col.push(ojson.columnLabels[i]);
