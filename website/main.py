@@ -292,7 +292,7 @@ def personal_analysis():
         account_id = request.form['account_id']
         if 'username' in session:
             username = session['username']
-            query = "select * from accounts where account_id = " + account_id
+            query = "select * from predictions where account_id = " + account_id
             print(username)
             print(query)
             body = {
@@ -300,7 +300,6 @@ def personal_analysis():
                 "username": username
             }
             query_url = "http://localhost:4003/query"
-            print("query_url", query_url)
             req = urllib.request.Request(query_url)
             req.add_header('Content-Type', 'application/json; charset=utf-8')
             data = json.dumps(body)
@@ -308,7 +307,7 @@ def personal_analysis():
             req.add_header('Content-Length', len(data))
             response = urllib.request.urlopen(req, data)
             result = json.loads(response.read().decode('utf-8'))
-            msg = 'The next transaction amount will be'  + result['rows'][0][5] +", then next transaction type will be" + result['rows'][0][3] +' .'
+            msg = 'The next transaction amount will be'  + result['rows'][0][1] +", then next transaction type will be" + result['rows'][0][2] +' .'
             return msg
     return "you are not login"
 
