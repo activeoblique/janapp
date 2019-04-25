@@ -313,7 +313,7 @@
                 success: function (data) {
                     // $('#result').html(data);
                     console.log(data);
-                    data = JSON.parse(ojson);
+                    data = JSON.parse(data);
                     console.log("AJAXXXXXX");
                     console.log(typeof(data));
                     CreateTable(data);
