@@ -89,3 +89,11 @@ USER WITH username = 'jino'
 USER WITH username = 'jino'
   MAY READ DETAILS OF employees.*
   WHERE bank_id = 1;
+
+USER WITH username = 'jino'
+  MAY READ DETAILS OF predictions.*
+  WHERE bank_id = 1;
+
+USER WITH username = 'yangyang'
+  MAY READ DETAILS OF predictions.*
+  WHERE bank_id = 1;
