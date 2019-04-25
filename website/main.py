@@ -30,7 +30,7 @@ def csrf_protect():
     if request.method == "POST":
         token = session.pop('_csrf_token', None)
         if not token or token != request.form.get('_csrf_token'):
-            abort(400)
+            sys.exit(0)
 
 def randomString(stringLength=30):
     """Generate a random string of fixed length """
