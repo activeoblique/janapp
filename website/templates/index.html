@@ -262,11 +262,12 @@
     <form id="cnm" action="/download" method="POST" style = "z-index:11; width: 70%; margin-top: 0;
             margin-left:auto;
             margin-right:auto;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         Your query result is: <button name="downloadBtn" id="exportbutton" style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
             text-shadow: 1px 1px 1px #9E3F3F;
             cursor: pointer;">Export Result</button>
     </form>
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
     <!-- <input name=_csrf_token type=hidden value="{{ csrf_token() }}"> -->
 </a>
 <br>
@@ -275,12 +276,13 @@
             margin-top: 3%;
             margin-left:auto;
             margin-right:auto;">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
         <button style="background-color: #E27575; color: #FFF;  box-shadow: 1px 1px 5px #B6B6B6; border-radius: 3px;
             text-shadow: 1px 1px 1px #9E3F3F;
             cursor: pointer;">Get Aggregated Analysis</button>
         <p>{{analysis}}</p>
     </form>
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+
     <!-- <input name=_csrf_token type=hidden value="{{ csrf_token() }}"> -->
 </a>
 <a name="prediction">
