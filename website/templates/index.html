@@ -303,7 +303,7 @@
                  alert("Invalid input");
                  return ;
              }
-             // var ojson = ojson = {"rows":[["Dani",20,"accounting",1],["Kelly",40,"engineering",1],["Jake",30,"finance",2]],"durationMillis":1951,"columnLabels":["name","age","department","bank_id"]};
+             // var ojson =  {"rows":[["Dani",20,"accounting",1],["Kelly",40,"engineering",1],["Jake",30,"finance",2]],"durationMillis":1951,"columnLabels":["name","age","department","bank_id"]};
              // CreateTable(ojson);
             $.ajax({
                 url: '/GetData',
@@ -313,6 +313,7 @@
                 success: function (data) {
                     // $('#result').html(data);
                     console.log(data);
+                    console.log(typeof(data));
                     CreateTable(JSON.parse(data));
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
